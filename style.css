@@ -306,3 +306,72 @@ h2 {
     font-size: 0.9rem;
     margin-top: 10px;
 }
+@media (max-width: 768px) {
+    /* Navbar adjustments */
+    .navbar .container {
+        flex-direction: column;
+        height: auto; /* Overrides the fixed 60px height */
+        padding: 15px 20px;
+        gap: 15px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+    }
+
+    /* Hero section adjustments */
+    .hero h1 {
+        font-size: 2rem; /* Scales down the large 3rem font */
+    }
+
+    .hero p {
+        font-size: 1rem;
+        padding: 0 10px;
+    }
+
+    /* Section padding reductions */
+    .section {
+        padding: 50px 0; /* Reduces the 80px padding for more screen space */
+    }
+
+    .project-full {
+        padding: 20px; /* Reduces the 40px box padding */
+    }
+
+    /* Image adjustments */
+    .sub-images img {
+        max-width: 100%; /* Ensures images never break out of their container */
+    }
+}
+
+/* For Mobile Phones (up to 480px) */
+@media (max-width: 480px) {
+    /* Stack navigation links vertically */
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 8px 0;
+    }
+
+    /* Smaller timeline adjustments */
+    .timeline {
+        padding-left: 15px;
+    }
+    
+    .timeline-item::before {
+        left: -21px; /* Adjusts the dot to align with the new timeline padding */
+    }
+}
