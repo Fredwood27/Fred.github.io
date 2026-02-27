@@ -82,3 +82,33 @@ document.querySelectorAll('.sub-toggle').forEach(toggle => {
         }
     });
 });
+
+// =========================================
+// Hamburger-Menü Logik
+// =========================================
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinksContainer = document.querySelector('.nav-links');
+const menuIcon = mobileMenu.querySelector('i');
+
+// Öffnen/Schließen beim Klick auf das Icon
+mobileMenu.addEventListener('click', () => {
+    navLinksContainer.classList.toggle('active');
+    
+    // Icon ändern (von ☰ zu ✖)
+    if (navLinksContainer.classList.contains('active')) {
+        menuIcon.classList.remove('fa-bars');
+        menuIcon.classList.add('fa-times');
+    } else {
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    }
+});
+
+// Menü automatisch schließen, wenn ein Link angeklickt wird
+document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+        navLinksContainer.classList.remove('active');
+        menuIcon.classList.remove('fa-times');
+        menuIcon.classList.add('fa-bars');
+    });
+});
