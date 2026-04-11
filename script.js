@@ -42,7 +42,7 @@ langToggleBtn.addEventListener('click', () => {
          }
     });
 
-    document.querySelectorAll('.nav-links a, h2, .btn, .role, .click-hint, .timeline-details li').forEach(el => {
+    document.querySelectorAll('.nav-links a, h2, h3, h4, .btn, .role, .click-hint, .timeline-details li').forEach(el => {
         if(el.dataset[newLang]) {
             el.textContent = el.dataset[newLang];
         }
