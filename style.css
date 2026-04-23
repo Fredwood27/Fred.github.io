@@ -289,8 +289,13 @@ h2 {
 }
 
 .sub-images img {
+<<<<<<< HEAD
     width: calc(50% - 10px);
     max-width: 350px;
+=======
+    width: 100%;
+    max-width: 180px;
+>>>>>>> b0fcaf6dceb94368aa6771ab782031ed0c493b7e
     border-radius: 5px;
     border: 1px solid #ccc;
 }

@@ -82,7 +82,7 @@
 
                 <div class="timeline-item">
                     <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
-                        <p class="role" data-de="Bachelor of Science - BS, Wirtschaftsingenieurwesen" data-en="Bachelor of Science - BS, Industrial Engineering">Bachelor of Science - BS, Wirtschaftsingenieurwesen</p>
+                        <p class="role" data-de="Bachelor of Science, Wirtschaftsingenieurwesen" data-en="Bachelor of Science, Industrial Engineering">Bachelor of Science, Wirtschaftsingenieurwesen</p>
                         <p class="date">2021 – 2025</p>
                         <p class="click-hint" data-de="Klicke für Details ▼" data-en="Click for details ▼">Klicke für Details ▼</p>
                     </div>
@@ -113,6 +113,18 @@
             
             <div class="timeline">
                 
+                <div class="timeline-item">
+                    <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
+                        <p class="role" data-de="Studentische Hilfskraft (HiWi)" data-en="Student Assistant (HiWi)">Studentische Hilfskraft (HiWi)</p>
+                        <p class="date">Apr 2026 – Heute | Berlin, Germany</p>
+                        <p class="click-hint" data-de="Klicke für Details ▼" data-en="Click for details ▼">Klicke für Details ▼</p>
+                    </div>
+                    <ul class="timeline-details" style="display: none;">
+                        <li data-de="Fokus auf Robotik und Python-Entwicklung" data-en="Focus on Robotics and Python development">Fokus auf Robotik und Python-Entwicklung</li>
+                        <li data-de="CAD-Konstruktion und 3D-Druck von Komponenten" data-en="CAD design and 3D printing of components">CAD-Konstruktion und 3D-Druck von Komponenten</li>
+                    </ul>
+                </div>
+
                 <div class="timeline-item">
                     <div class="timeline-toggle"> <h3>Siemens Energy</h3>
                         <p class="role" data-de="Praktikum" data-en="Internship">Praktikum</p>
@@ -160,7 +172,7 @@
             <h2 data-de="Projekte" data-en="Projects">Projekte</h2>
             
             <div class="project-full">
-                <h3 style="color: var(--primary-color); margin-bottom: 10px;" data-de="Bachelorarbeit" data-en="Bachelor Thesis">Bachelorarbeit</h3>
+                <h3 style="color: var(--text-dark); margin-bottom: 10px;" data-de="Bachelorarbeit" data-en="Bachelor Thesis">Bachelorarbeit</h3>
                 <h3 style="font-size: 1.2rem; margin-bottom: 20px;" data-de="Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen." data-en="Development of an adaptive algorithm to optimize the gripping process with flexible, leakage-tolerant suction grippers for controlled handling of flexible components.">Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen.</h3>
 
                 <img src="assets/Roboter.png" alt="Roboter Setup" class="robot-img">
@@ -199,28 +211,327 @@
                         <div class="sub-content" style="display: none;">
                             <p data-de="Auszug aus der Leckageanalyse und automatischen Roboter-Korrektur:" data-en="Excerpt from the leakage analysis and automatic robot correction:">Auszug aus der Leckageanalyse und automatischen Roboter-Korrektur:</p>
                             <pre class="inline-code"><code>def analyze_and_correct_leak(val1, val2, val3, val4, ur_controller):
-    # Leckagemitte schätzen
+from controller.ur_controller import URController
+import pyads
+import numpy as np
+import time
+import threading
+
+#zu Teilen mit ChatGPT erstellt
+STRATEGY_SELECTION = 1    # 0 = Verschiebung, 1 = Rotation
+ROBOT_IP = "192.168.137.55"
+PLC_AMS_ID = '192.168.137.51.1.1'
+PLC_PORT = 851
+ROBOT_SPEED = 0.02
+ROBOT_ACCELERATION = 0.02
+WAIT_VALIDATION = 3.0
+WAIT_PRESSURE = 2.0 
+
+
+REF_TABLE = {
+    0.60: -315, 0.58: -302, 0.56: -288, 0.54: -275, 0.52: -261,
+    0.50: -248, 0.48: -235, 0.46: -222, 0.44: -209, 0.42: -196,
+    0.40: -183, 0.38: -169, 0.36: -156, 0.34: -142, 0.32: -129,
+    0.30: -116, 0.28: -102, 0.26: -90,  0.24: -78,  0.22: -67,
+    0.20: -56,  0.18: -46,  0.16: -37,  0.14: -29,  0.12: -22,
+    0.10: -16,  0.08: -11,  0.06: -7,   0.04: -4,   0.02: -2
+}
+
+def get_reference_pressure(setpoint):
+    # Referenzdruck aus Tabelle
+    closest = min(REF_TABLE.keys(), key=lambda k: abs(k - setpoint))
+    return REF_TABLE[closest]
+
+def check_grip_success(plc, ur_controller, current_setpoint):
+    # Griffstatus bewerten
+    val1 = plc.read_by_name("GVL.P_in[1]") + 1
+    val2 = plc.read_by_name("GVL.P_in[2]")
+    val3 = plc.read_by_name("GVL.P_in[3]") - 1
+    val4 = plc.read_by_name("GVL.P_in[4]")
+    values = np.array([val1, val2, val3, val4])
+    
+    avg_p = np.mean(values)
+    max_diff = np.max(values) - np.min(values)
+    p_ref = get_reference_pressure(current_setpoint)
+    dev_ref = np.max(np.abs(values - p_ref))
+
+    print(f"📊 Messung: {values} | Ø: {avg_p:.1f} | Ref: {p_ref}")
+
+    # Fall 1: Fehlversuch
+    if avg_p > -1.0 and np.all(values > -3.0):
+        print("❌ Fall 1: Fehlversuch (Kein Vakuum)")
+        return "Failed", values, None
+
+    # Sensoren identifizieren
+    max_val = np.max(values)
+    leak_indices = np.where(values == max_val)[0]
+    
+    axis_map = {0: "-Y", 1: "-X", 2: "+Y", 3: "+X"}
+    affected_axes = [axis_map[i] for i in leak_indices]
+    leak_info_str = " & ".join(affected_axes)
+    
+    primary_leak_sensor = leak_indices[0] + 1 
+
+    is_homogenous = max_diff <= 2.0
+    is_near_ref = dev_ref <= 4.0
+
+    # Fall 2: Erfolg
+    if is_homogenous and is_near_ref:
+        print("✅ Fall 2: Vollständiger Griff")
+        return "Success", values, None
+
+    # Fall 3: Leckage
+    if is_homogenous and not is_near_ref:
+        print(f"⚠️ Fall 3a: Mittige Leckage bei {leak_info_str}")
+        return "Leakage Central", values, primary_leak_sensor
+
+    print(f"⚠️ Fall 3b: Seitliche Leckage bei {leak_info_str}")
+    return "Leakage Side", values, primary_leak_sensor
+
+# Strategie Verschiebung
+def move_away_from_leak(plc, ur_controller, setpoint, initial_leak_sensor):
+    print("\n🔹 Starte Strategie: VERSCHIEBUNG")
+    step_up = 0.10
+    step_away = 0.02
+    
+    # Speed-Vektor [unused, unused, speed, acc]
+    move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
+    
+    last_leak = initial_leak_sensor
+    iteration = 1
+    limit = 10 
+    
+    while iteration <= limit:
+        print(f"\n  ↪️ Iteration {iteration} (Korrektur Sensor {last_leak})...")
+        
+        move = [0.0]*6
+        if last_leak == 1: move[1] = step_away
+        elif last_leak == 3: move[1] = -step_away
+        elif last_leak == 2: move[0] = step_away
+        elif last_leak == 4: move[0] = -step_away
+        
+        # Vakuum aus
+        ur_controller.set_robot_analog_output(0, 0)
+        
+        time.sleep(WAIT_VALIDATION) 
+        
+        # Hochfahren
+        ur_controller.move_robot_relative_from_current_position(
+            [0,0,step_up,0,0,0], robot_speed=move_params, asynchronous=False
+        )
+        
+        time.sleep(WAIT_VALIDATION)
+
+        # Verschieben
+        ur_controller.move_robot_relative_from_current_position(
+            move, robot_speed=move_params, asynchronous=False
+        )
+
+        time.sleep(WAIT_VALIDATION)
+
+        # Vakuum an und Runterfahren
+        ur_controller.set_robot_analog_output(0, setpoint)
+        ur_controller.move_robot_relative_from_current_position(
+            [0,0,-step_up,0,0,0], robot_speed=move_params, asynchronous=False
+        )
+
+        time.sleep(WAIT_VALIDATION)
+
+        status, vals, curr_leak = check_grip_success(plc, ur_controller, setpoint)
+        
+        if status == "Success":
+            print("🎉 Erfolg! Griff korrigiert.")
+            return True
+        
+        if "Leakage" in status:
+            opposite = {1: 3, 3: 1, 2: 4, 4: 2}
+            if curr_leak and curr_leak == opposite.get(last_leak):
+                print("🛑 Abbruch: Leckage gesprungen.")
+                return False
+            last_leak = curr_leak
+        else:
+            print("❌ Abbruch: Kein Griff mehr.")
+            return False
+            
+        iteration += 1
+    return False
+
+# Strategie Rotation
+def rotate_around_leak(plc, ur_controller, setpoint):
+    print("\n🔹 Starte Strategie: ROTATION")
+    
+    val1 = plc.read_by_name("GVL.P_in[1]") + 1
+    val2 = plc.read_by_name("GVL.P_in[2]")
+    val3 = plc.read_by_name("GVL.P_in[3]") - 1
+    val4 = plc.read_by_name("GVL.P_in[4]")
     pressures = np.array([val1, val2, val3, val4])
-    weights = np.max(pressures) - pressures + 1e-6
-    positions = np.array(list(SENSOR_LOCAL.values()))
-    leck_pos = np.average(positions, axis=0, weights=weights)
     
-    # Drehachse berechnen
-    leak_vec = np.array([-leck_pos[0], -leck_pos[1], 0.0])
-    leak_vec /= np.linalg.norm(leak_vec)
-    axis = np.cross(leak_vec, np.array([0, 0, 1.0]))
-    axis /= np.linalg.norm(axis)
+    sensor_positions = np.array([
+        [0.0, -0.0225, 0.0], [-0.0225, 0.0, 0.0], 
+        [0.0, 0.0225, 0.0],  [0.0225, 0.0, 0.0]
+    ])
+
+    min_pressure = np.min(pressures)
+    weights = pressures - min_pressure + 1e-6 
+    L_vec = np.average(sensor_positions, axis=0, weights=weights)
+    print(f"📊 Drücke: {pressures}")
+    print(f"💨 Leckagevektor L: {L_vec}")
+
+    Z_vec = np.array([0.0, 0.0, 1.0])
+    R_vec = np.cross(L_vec, Z_vec)
+    norm_R = np.linalg.norm(R_vec)
     
-    # Drehung ausführen
-    rotvec = axis * 0.78 # 45 Grad
+    if norm_R < 1e-6:
+        print("⚠️ Keine klare Leckagerichtung. Abbruch.")
+        return False
+
+    R_norm = R_vec / norm_R
+    
+    rotation_angle = -0.6
+    dist_retract = 0.010
+    dist_approach_xy = 0.060
+    dist_approach_z = 0.005
+
+    rot_cmd = R_norm * rotation_angle
+    print(f"🤖 Rotationsbefehl: {rot_cmd}")
+
+    if np.linalg.norm(L_vec) > 1e-6:
+        dir_L = L_vec / np.linalg.norm(L_vec)
+    else:
+        dir_L = np.array([0,0,0])
+    
+    print(f"🔄 Ablauf: Rücksetzen -> Drehen -> Auffahren")
+
+    move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
+
+    # Vakuum aus
+    ur_controller.set_robot_analog_output(0, 0)
+    time.sleep(0.5)
+
+    # Rücksetzen
+    vec_retract = dir_L * dist_retract
     ur_controller.move_robot_relative_from_current_position(
-        [0, 0, 0, rotvec[0], rotvec[1], rotvec[2]], 
-        robot_speed=[0.02]*4
+        [vec_retract[0], vec_retract[1], 0, 0, 0, 0], 
+        robot_speed=move_params, asynchronous=False
+    )
+    time.sleep(0.5)
+
+    # Drehen
+    print(f"🤖 Rotiere...")
+    ur_controller.move_robot_relative_from_current_position(
+        [0, 0, 0, rot_cmd[0], rot_cmd[1], rot_cmd[2]], 
+        robot_speed=move_params, asynchronous=False
+    )
+    time.sleep(0.5)
+
+    # Auffahren
+    vec_approach = -dir_L * dist_approach_xy
+    
+    # Vakuum AN vor Kontakt
+    ur_controller.set_robot_analog_output(0, setpoint)
+    time.sleep(0.5)
+    
+    ur_controller.move_robot_relative_from_current_position(
+        [vec_approach[0], vec_approach[1], -dist_approach_z, 0, 0, 0], 
+        robot_speed=move_params, asynchronous=False
+    )
+    
+    # Warten auf Druckstabilisierung
+    time.sleep(WAIT_PRESSURE)
+
+    print("\n📝 Überprüfung nach Rotation:")
+    status, _, _ = check_grip_success(plc, ur_controller, setpoint)
+    return status == "Success"
+
+def robot_control(ur_controller, stop_event):
+    if stop_event.is_set(): return
+    current_setpoint = 0.4
+
+    try:
+        plc = pyads.Connection(PLC_AMS_ID, PLC_PORT)
+        plc.open()
+        print(f"✅ Verbunden mit PLC: {PLC_AMS_ID}")
+    except Exception as e:
+        print(f"❌ Fehler bei PLC Verbindung: {e}")
+        stop_event.set()
+        return
+    
+    print("\n🏁 Start: Initialer Griffversuch")
+    ur_controller.set_robot_analog_output(0, current_setpoint)
+    
+    # Warten auf Druckaufbau initial
+    time.sleep(WAIT_PRESSURE)
+    
+    status, values, leak_sensor_id = check_grip_success(plc, ur_controller, current_setpoint)
+
+    if status == "Success":
+        print("✅ Griff OK - Weiter im Prozess.")
+    elif status == "Failed":
+        print("❌ Abbruch: Objekt nicht gegriffen.")
+        ur_controller.set_robot_analog_output(0, 0)
+    elif "Leakage" in status:
+        print(f"⚠️ Starte Kompensation für {status}...")
+        success = False
+        if STRATEGY_SELECTION == 0:
+            if leak_sensor_id is not None:
+                success = move_away_from_leak(plc, ur_controller, current_setpoint, leak_sensor_id)
+            else:
+                print("❌ Fatal: Leckage erkannt, Sensor unklar.")
+        elif STRATEGY_SELECTION == 1:
+            success = rotate_around_leak(plc, ur_controller, current_setpoint)
+            
+        if success: print("✅ Kompensation erfolgreich!")
+        else: print("❌ Kompensation fehlgeschlagen.")
+
+    print("\n🏁 Programmende.")
+    ur_controller.set_robot_analog_output(0, 0)
+    
+    move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
+
+    # Sicherheitsrückzug
+    ur_controller.move_robot_relative_from_current_position(
+        [0,0,0.1,0,0,0], robot_speed=move_params, asynchronous=False
+    )
+    
+    plc.close()
+    stop_event.set()
+
+def stop_robot(ur_controller, stop_event):
+    while not stop_event.is_set():
+        if not ur_controller.get_robot_digital_input_state(4): 
+            print("🛑 NOT-HALT ausgelöst!")
+            ur_controller.stop_robot_linear_movement_jointspace()
+            stop_event.set()
+            break
+        time.sleep(0.1)
+
+def main():
+    ur_controller = URController(name="UR10", ip_address=ROBOT_IP, frequency=500)
+    ur_controller.connect()
+    print(f"✅ Verbunden mit Roboter: {ROBOT_IP}")
+
+    stop_event = threading.Event()
+    t1 = threading.Thread(target=robot_control, args=(ur_controller, stop_event))
+    t2 = threading.Thread(target=stop_robot, args=(ur_controller, stop_event))
+    
+    t1.start()
+    t2.start()
+    t1.join()
+    t2.join()
+
+if __name__ == "__main__":
+    main()
     )</code></pre>
                         </div>
                     </div>
 
                 </div>
+            </div>
+
+            <!-- New Project Section -->
+            <div class="project-full" style="margin-top: 40px;">
+                <h3 style="color: var(--text-dark); margin-bottom: 10px;" data-de="Vakuumgreifer für Beutel" data-en="Vacuum Gripper for Bags">Vakuumgreifer für Beutel</h3>
+                <p data-de="Entwicklung und Konstruktion eines spezialisierten Greifersystems zur effizienten Handhabung von Beutelverpackungen." data-en="Development and design of a specialized gripper system for efficient handling of bag packaging.">Entwicklung und Konstruktion eines spezialisierten Greifersystems zur effizienten Handhabung von Beutelverpackungen.</p>
             </div>
         </div>
     </section>
