@@ -39,13 +39,14 @@ body {
     background: var(--bg);
     overflow-x: hidden;
     position: relative;
+    isolation: isolate;
 }
 
 /* Subtle dot-grid background */
 .grid-bg {
     position: fixed;
     inset: 0;
-    z-index: 0;
+    z-index: -2;
     pointer-events: none;
     background-image:
         radial-gradient(circle at 1px 1px, rgba(251, 146, 60, 0.07) 1px, transparent 0);
@@ -1051,7 +1052,7 @@ h2::after { left: calc(100% + 18px); }
     position: fixed;
     inset: 0;
     pointer-events: none;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
 }
 
