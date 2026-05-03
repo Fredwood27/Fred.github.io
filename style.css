@@ -1046,9 +1046,9 @@ h2::after { left: calc(100% + 18px); }
 }
 
 /* =========================================
-   ROBOT ARM BACKGROUND
+   ROTATING GEARS BACKGROUND
    ========================================= */
-.robot-bg {
+.tech-bg {
     position: fixed;
     inset: 0;
     pointer-events: none;
@@ -1056,82 +1056,68 @@ h2::after { left: calc(100% + 18px); }
     overflow: hidden;
 }
 
-.robot-arm {
+.gear {
     position: absolute;
-    width: 360px;
-    height: 360px;
     color: var(--primary);
+    opacity: 0.18;
+    filter: drop-shadow(0 0 6px var(--primary-glow));
+}
+
+.gear-1 {
+    width: 420px;
+    height: 420px;
+    bottom: -100px;
+    left: -120px;
+}
+
+.gear-2 {
+    width: 280px;
+    height: 280px;
+    top: 12vh;
+    right: -90px;
+    color: var(--accent);
     opacity: 0.13;
-    filter: drop-shadow(0 0 8px var(--primary-glow));
 }
 
-.robot-arm-1 {
-    bottom: -60px;
-    left: -40px;
+.gear-3 {
+    width: 200px;
+    height: 200px;
+    bottom: 30vh;
+    right: 18vw;
+    opacity: 0.10;
 }
 
-.robot-arm-2 {
-    bottom: -60px;
-    right: -40px;
-    transform: scaleX(-1);
+.gear-spin,
+.gear-spin-rev {
+    transform-origin: center;
+    transform-box: view-box;
+    animation: gearRotate 28s linear infinite;
 }
 
-/* Joint pivots: each rotating <g> swings around its parent's transform origin (which is the joint center, since I drew the children offset from 0,0) */
-.robot-arm-1 .r-shoulder { animation: shoulderSwing 9s ease-in-out infinite; transform-origin: 0px 80px; transform-box: fill-box; }
-.robot-arm-1 .r-arm1     { animation: arm1Swing     7s ease-in-out infinite; transform-origin: 0px 80px; transform-box: fill-box; }
-.robot-arm-1 .r-arm2     { animation: arm2Swing     5s ease-in-out infinite; transform-origin: 0px 0px;  transform-box: fill-box; }
-.robot-arm-1 .r-tool     { animation: toolSpin      4s linear infinite;       transform-origin: 0px 0px;  transform-box: fill-box; }
-.robot-arm-1 .r-spark    { animation: sparkBlink    1.4s ease-in-out infinite; }
+.gear-spin-rev {
+    animation: gearRotateRev 36s linear infinite;
+}
 
-.robot-arm-2 .r-shoulder { animation: shoulderSwingAlt 11s ease-in-out infinite; transform-origin: 0px 80px; transform-box: fill-box; }
-.robot-arm-2 .r-arm1     { animation: arm1SwingAlt     8s ease-in-out infinite; transform-origin: 0px 80px; transform-box: fill-box; }
-.robot-arm-2 .r-arm2     { animation: arm2SwingAlt     6s ease-in-out infinite; transform-origin: 0px 0px;  transform-box: fill-box; }
-.robot-arm-2 .r-tool     { animation: toolSpin        5.5s linear infinite;     transform-origin: 0px 0px;  transform-box: fill-box; }
-.robot-arm-2 .r-spark    { animation: sparkBlink      1.9s ease-in-out infinite; animation-delay: 0.4s; }
+.gear-3 .gear-spin {
+    animation-duration: 18s;
+}
 
-@keyframes shoulderSwing {
-    0%, 100% { transform: rotate(-15deg); }
-    50%      { transform: rotate(20deg); }
-}
-@keyframes shoulderSwingAlt {
-    0%, 100% { transform: rotate(18deg); }
-    50%      { transform: rotate(-22deg); }
-}
-@keyframes arm1Swing {
-    0%, 100% { transform: rotate(0deg); }
-    50%      { transform: rotate(-25deg); }
-}
-@keyframes arm1SwingAlt {
-    0%, 100% { transform: rotate(-5deg); }
-    50%      { transform: rotate(28deg); }
-}
-@keyframes arm2Swing {
-    0%, 100% { transform: rotate(35deg); }
-    50%      { transform: rotate(-30deg); }
-}
-@keyframes arm2SwingAlt {
-    0%, 100% { transform: rotate(-30deg); }
-    50%      { transform: rotate(40deg); }
-}
-@keyframes toolSpin {
+@keyframes gearRotate {
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
 }
-@keyframes sparkBlink {
-    0%, 100% { opacity: 0; }
-    50%      { opacity: 1; }
+
+@keyframes gearRotateRev {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(-360deg); }
 }
 
 @media (max-width: 768px) {
-    .robot-arm {
-        width: 220px;
-        height: 220px;
-        opacity: 0.09;
-    }
-    .robot-arm-1 { bottom: -40px; left: -60px; }
-    .robot-arm-2 { bottom: -40px; right: -60px; }
+    .gear-1 { width: 280px; height: 280px; bottom: -80px; left: -100px; }
+    .gear-2 { width: 200px; height: 200px; top: 8vh; right: -70px; }
+    .gear-3 { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .robot-arm * { animation: none !important; }
+    .gear-spin, .gear-spin-rev { animation: none; }
 }
