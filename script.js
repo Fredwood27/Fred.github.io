@@ -105,7 +105,7 @@ document.querySelectorAll('.sub-toggle').forEach(toggle => {
 // =========================================
 // Scroll-triggered Section Reveal Transitions
 // =========================================
-const revealEls = document.querySelectorAll('.reveal');
+const revealEls = document.querySelectorAll('.reveal, .section-divider');
 
 if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {

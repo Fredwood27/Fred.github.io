@@ -19,6 +19,88 @@
     <div class="grid-bg" aria-hidden="true"></div>
     <div class="scan-line" aria-hidden="true"></div>
 
+    <div class="robot-bg" aria-hidden="true">
+        <!-- Robot arm 1 (left) -->
+        <svg class="robot-arm robot-arm-1" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
+            <g class="r-base">
+                <rect x="-30" y="80" width="60" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="-40" y1="100" x2="40" y2="100" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="-30" y1="100" x2="-40" y2="115" stroke="currentColor" stroke-width="1"/>
+                <line x1="0" y1="100" x2="0" y2="115" stroke="currentColor" stroke-width="1"/>
+                <line x1="30" y1="100" x2="40" y2="115" stroke="currentColor" stroke-width="1"/>
+            </g>
+            <g class="r-shoulder">
+                <circle cx="0" cy="80" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="0" cy="80" r="3" fill="currentColor"/>
+                <g class="r-arm1">
+                    <rect x="-8" y="-10" width="16" height="90" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="-4" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1"/>
+                    <line x1="-4" y1="40" x2="4" y2="40" stroke="currentColor" stroke-width="1"/>
+                    <line x1="-4" y1="60" x2="4" y2="60" stroke="currentColor" stroke-width="1"/>
+                    <g transform="translate(0,-10)">
+                        <circle cx="0" cy="0" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="2.5" fill="currentColor"/>
+                        <g class="r-arm2">
+                            <rect x="-6" y="-70" width="12" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="-3" y1="-20" x2="3" y2="-20" stroke="currentColor" stroke-width="1"/>
+                            <line x1="-3" y1="-40" x2="3" y2="-40" stroke="currentColor" stroke-width="1"/>
+                            <g transform="translate(0,-70)">
+                                <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <g class="r-tool">
+                                    <line x1="0" y1="0" x2="0" y2="-18" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="-6" y1="-18" x2="6" y2="-18" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="-6" y1="-18" x2="-6" y2="-26" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="6" y1="-18" x2="6" y2="-26" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle class="r-spark" cx="0" cy="-26" r="2" fill="currentColor"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+
+        <!-- Robot arm 2 (right, mirrored, different timing) -->
+        <svg class="robot-arm robot-arm-2" viewBox="-200 -200 400 400" xmlns="http://www.w3.org/2000/svg">
+            <g class="r-base">
+                <rect x="-30" y="80" width="60" height="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="-40" y1="100" x2="40" y2="100" stroke="currentColor" stroke-width="1.5"/>
+                <line x1="-30" y1="100" x2="-40" y2="115" stroke="currentColor" stroke-width="1"/>
+                <line x1="0" y1="100" x2="0" y2="115" stroke="currentColor" stroke-width="1"/>
+                <line x1="30" y1="100" x2="40" y2="115" stroke="currentColor" stroke-width="1"/>
+            </g>
+            <g class="r-shoulder">
+                <circle cx="0" cy="80" r="14" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                <circle cx="0" cy="80" r="3" fill="currentColor"/>
+                <g class="r-arm1">
+                    <rect x="-8" y="-10" width="16" height="90" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                    <line x1="-4" y1="20" x2="4" y2="20" stroke="currentColor" stroke-width="1"/>
+                    <line x1="-4" y1="40" x2="4" y2="40" stroke="currentColor" stroke-width="1"/>
+                    <line x1="-4" y1="60" x2="4" y2="60" stroke="currentColor" stroke-width="1"/>
+                    <g transform="translate(0,-10)">
+                        <circle cx="0" cy="0" r="11" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                        <circle cx="0" cy="0" r="2.5" fill="currentColor"/>
+                        <g class="r-arm2">
+                            <rect x="-6" y="-70" width="12" height="70" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                            <line x1="-3" y1="-20" x2="3" y2="-20" stroke="currentColor" stroke-width="1"/>
+                            <line x1="-3" y1="-40" x2="3" y2="-40" stroke="currentColor" stroke-width="1"/>
+                            <g transform="translate(0,-70)">
+                                <circle cx="0" cy="0" r="8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <g class="r-tool">
+                                    <line x1="0" y1="0" x2="0" y2="-18" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="-6" y1="-18" x2="6" y2="-18" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="-6" y1="-18" x2="-6" y2="-26" stroke="currentColor" stroke-width="1.5"/>
+                                    <line x1="6" y1="-18" x2="6" y2="-26" stroke="currentColor" stroke-width="1.5"/>
+                                    <circle class="r-spark" cx="0" cy="-26" r="2" fill="currentColor"/>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </svg>
+    </div>
+
     <nav class="navbar">
         <div class="container">
             <a href="#" class="logo">
@@ -254,8 +336,12 @@
                         <div class="sub-content" style="display: none;">
                             <p data-de="Konstruktion in Siemens NX & Solid Edge, anschließend 3D-gedruckt." data-en="Designed in Siemens NX & Solid Edge, then 3D printed.">Konstruktion in Siemens NX & Solid Edge, anschließend 3D-gedruckt.</p>
                             <div class="sub-images">
-                                <img src="assets/CAD1.png" alt="CAD-Konstruktion 1">
-                                <img src="assets/CAD2.png" alt="CAD-Konstruktion 2">
+                                <figure class="cad-figure cad-figure-1">
+                                    <img src="assets/CAD1.png" alt="CAD-Konstruktion 1">
+                                </figure>
+                                <figure class="cad-figure cad-figure-2">
+                                    <img src="assets/CAD2.png" alt="CAD-Konstruktion 2">
+                                </figure>
                             </div>
                         </div>
                     </div>
