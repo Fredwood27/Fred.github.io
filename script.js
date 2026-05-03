@@ -21,18 +21,23 @@ const specialTranslations = {
     }
 };
 
+const navLabelMap = {
+    about: { de: 'Über Mich', en: 'About' },
+    education: { de: 'Ausbildung', en: 'Education' },
+    experience: { de: 'Erfahrung', en: 'Experience' },
+    projects: { de: 'Projekte', en: 'Projects' },
+    contact: { de: 'Kontakt', en: 'Contact' }
+};
+
 langToggleBtn.addEventListener('click', () => {
     const currentLang = document.documentElement.lang;
     const newLang = currentLang === 'de' ? 'en' : 'de';
 
-    // Set new language
     document.documentElement.lang = newLang;
     langToggleBtn.textContent = newLang === 'de' ? 'EN' : 'DE';
 
-    // Update general elements
     translatableElements.forEach(el => {
          if (el.dataset[newLang] && el.children.length === 0) {
-            // Keep arrow for sub-toggles if it exists
             if (el.classList.contains('sub-toggle')) {
                 const isExpanded = el.textContent.includes('▼');
                 el.textContent = (isExpanded ? '▼ ' : '▶ ') + el.dataset[newLang].replace('▶ ', '').replace('▼ ', '');
@@ -42,14 +47,28 @@ langToggleBtn.addEventListener('click', () => {
          }
     });
 
-    document.querySelectorAll('.nav-links a, h2, h3, h4, .btn, .role, .click-hint, .timeline-details li').forEach(el => {
-        if(el.dataset[newLang]) {
+    // Nav links: rebuild with the numeric prefix span preserved
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        const href = link.getAttribute('href') || '';
+        const key = href.replace('#', '');
+        const label = navLabelMap[key] && navLabelMap[key][newLang];
+        const numEl = link.querySelector('.nav-num');
+        if (label && numEl) {
+            link.innerHTML = '';
+            link.appendChild(numEl);
+            link.appendChild(document.createTextNode(' ' + label));
+        } else if (link.dataset[newLang]) {
+            link.textContent = link.dataset[newLang];
+        }
+    });
+
+    document.querySelectorAll('h2, h3, h4, .btn, .role, .click-hint, .timeline-details li').forEach(el => {
+        if (el.dataset[newLang] && el.children.length === 0) {
             el.textContent = el.dataset[newLang];
         }
     });
 
-    // Update special elements
-    if(thesisOverview) {
+    if (thesisOverview) {
         thesisOverview.innerHTML = specialTranslations.thesisOverview[newLang];
     }
     titleElement.textContent = titleElement.dataset[newLang];
@@ -74,27 +93,49 @@ document.querySelectorAll('.sub-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
         const content = toggle.nextElementSibling;
         if (content.style.display === 'none' || content.style.display === '') {
-            content.style.display = 'block'; // Inhalt anzeigen
-            toggle.textContent = toggle.textContent.replace('▶', '▼'); // Pfeil nach unten
+            content.style.display = 'block';
+            toggle.textContent = toggle.textContent.replace('▶', '▼');
         } else {
-            content.style.display = 'none'; // Inhalt verstecken
-            toggle.textContent = toggle.textContent.replace('▼', '▶'); // Pfeil nach rechts
+            content.style.display = 'none';
+            toggle.textContent = toggle.textContent.replace('▼', '▶');
         }
     });
 });
 
 // =========================================
-// Hamburger-Menü Logik
+// Scroll-triggered Section Reveal Transitions
+// =========================================
+const revealEls = document.querySelectorAll('.reveal');
+
+if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                io.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -8% 0px'
+    });
+
+    revealEls.forEach(el => io.observe(el));
+} else {
+    // Fallback for very old browsers
+    revealEls.forEach(el => el.classList.add('is-visible'));
+}
+
+// =========================================
+// Hamburger menu
 // =========================================
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinksContainer = document.querySelector('.nav-links');
 const menuIcon = mobileMenu.querySelector('i');
 
-// Öffnen/Schließen beim Klick auf das Icon
 mobileMenu.addEventListener('click', () => {
     navLinksContainer.classList.toggle('active');
-    
-    // Icon ändern (von ☰ zu ✖)
+
     if (navLinksContainer.classList.contains('active')) {
         menuIcon.classList.remove('fa-bars');
         menuIcon.classList.add('fa-times');
@@ -104,7 +145,6 @@ mobileMenu.addEventListener('click', () => {
     }
 });
 
-// Menü automatisch schließen, wenn ein Link angeklickt wird
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         navLinksContainer.classList.remove('active');

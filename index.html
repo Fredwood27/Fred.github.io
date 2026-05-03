@@ -4,45 +4,85 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-de="Frederik Hoeft - Ingenieur-Portfolio" data-en="Frederik Hoeft - Engineering Portfolio">Frederik Hoeft - Ingenieur-Portfolio</title>
-    
+
     <link rel="icon" href="assets/Website-Bild.jfif" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+
     <nav class="navbar">
         <div class="container">
-            <a href="#" class="logo">Eng.Student</a>
-            
+            <a href="#" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">F.HOEFT</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-cursor">_</span>
+            </a>
+
             <div class="menu-toggle" id="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
 
             <ul class="nav-links">
-                <li><a href="#about" data-de="Über Mich" data-en="About">Über Mich</a></li>
-                <li><a href="#education" data-de="Ausbildung" data-en="Education">Ausbildung</a></li>
-                <li><a href="#experience" data-de="Erfahrung" data-en="Experience">Erfahrung</a></li>
-                <li><a href="#projects" data-de="Projekte" data-en="Projects">Projekte</a></li>
-                <li><a href="#contact" data-de="Kontakt" data-en="Contact">Kontakt</a></li>
+                <li><a href="#about" data-de="Über Mich" data-en="About"><span class="nav-num">01</span> Über Mich</a></li>
+                <li><a href="#education" data-de="Ausbildung" data-en="Education"><span class="nav-num">02</span> Ausbildung</a></li>
+                <li><a href="#experience" data-de="Erfahrung" data-en="Experience"><span class="nav-num">03</span> Erfahrung</a></li>
+                <li><a href="#projects" data-de="Projekte" data-en="Projects"><span class="nav-num">04</span> Projekte</a></li>
+                <li><a href="#contact" data-de="Kontakt" data-en="Contact"><span class="nav-num">05</span> Kontakt</a></li>
                 <li><button id="lang-toggle" class="lang-btn">EN</button></li>
             </ul>
         </div>
     </nav>
 
     <header class="hero">
-        <div class="container">
-            <h1><span data-de="Hallo, ich bin" data-en="Hello, I'm">Hallo, ich bin</span> <span class="highlight">Frederik Hoeft</span></h1>
-            <p data-de="MSc Wirtschaftsingenieurwesen & BSc Maschinenbau Student an der TU Berlin" data-en="MSc Industrial Engineering & BSc Mechanical Engineering Student at TU Berlin">MSc Wirtschaftsingenieurwesen & BSc Maschinenbau Student an der TU Berlin</p>
-            <a href="#projects" class="btn" data-de="Meine Projekte" data-en="View My Work">Meine Projekte</a>
+        <div class="hero-corner top-left"></div>
+        <div class="hero-corner top-right"></div>
+        <div class="hero-corner bottom-left"></div>
+        <div class="hero-corner bottom-right"></div>
+
+        <div class="container hero-content">
+            <div class="hero-meta">
+                <span class="hero-meta-line"></span>
+                <span class="hero-meta-text" data-de="// PORTFOLIO / V.2026" data-en="// PORTFOLIO / V.2026">// PORTFOLIO / V.2026</span>
+            </div>
+            <h1>
+                <span class="hero-greeting" data-de="Hallo, ich bin" data-en="Hello, I'm">Hallo, ich bin</span>
+                <span class="highlight">Frederik Hoeft</span>
+            </h1>
+            <p class="hero-sub" data-de="MSc Wirtschaftsingenieurwesen Student an der TU Berlin" data-en="MSc Industrial Engineering Student at TU Berlin">MSc Wirtschaftsingenieurwesen Student an der TU Berlin</p>
+            <div class="hero-specs">
+                <span class="spec"><span class="spec-key">LOC</span><span class="spec-val">Berlin, DE</span></span>
+                <span class="spec"><span class="spec-key">FIELD</span><span class="spec-val" data-de="Robotik / CAD / Python" data-en="Robotics / CAD / Python">Robotik / CAD / Python</span></span>
+                <span class="spec"><span class="spec-key">STATUS</span><span class="spec-val pulse" data-de="Aktiv" data-en="Active">Aktiv</span></span>
+            </div>
+            <a href="#projects" class="btn" data-de="Meine Projekte" data-en="View My Work">
+                <span class="btn-arrow">▸</span> Meine Projekte
+            </a>
         </div>
     </header>
 
-    <section id="about" class="section">
+    <div class="section-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-mark">◆</span>
+        <span class="divider-line"></span>
+    </div>
+
+    <section id="about" class="section reveal" data-num="01">
         <div class="container">
-            <h2 data-de="Über Mich" data-en="About Me">Über Mich</h2>
-            <p data-de="Ich bin Wirtschaftsingenieur mit Schwerpunkt Maschinenbau. Ich habe einen BSc in Wirtschaftsingenieurwesen und absolviere derzeit einen MSc in Wirtschaftsingenieurwesen sowie einen BSc in Maschinenbau an der TU Berlin." data-en="I am an Industrial Engineer with a focus on Mechanical Engineering. I hold a BSc in Industrial Engineering and am currently pursuing an MSc in Industrial Engineering alongside a BSc in Mechanical Engineering at TU Berlin.">Ich bin Wirtschaftsingenieur mit Schwerpunkt Maschinenbau. Ich habe einen BSc in Wirtschaftsingenieurwesen und absolviere derzeit einen MSc in Wirtschaftsingenieurwesen sowie einen BSc in Maschinenbau an der TU Berlin.</p>
+            <div class="section-header">
+                <span class="section-num">01 //</span>
+                <h2 data-de="Über Mich" data-en="About Me">Über Mich</h2>
+            </div>
+            <p class="about-text" data-de="Ich bin Wirtschaftsingenieur mit Schwerpunkt Maschinenbau. Ich habe einen BSc in Wirtschaftsingenieurwesen und absolviere derzeit einen MSc in Wirtschaftsingenieurwesen an der TU Berlin." data-en="I am an Industrial Engineer with a focus on Mechanical Engineering. I hold a BSc in Industrial Engineering and am currently pursuing an MSc in Industrial Engineering at TU Berlin.">Ich bin Wirtschaftsingenieur mit Schwerpunkt Maschinenbau. Ich habe einen BSc in Wirtschaftsingenieurwesen und absolviere derzeit einen MSc in Wirtschaftsingenieurwesen an der TU Berlin.</p>
             <div class="skills">
                 <span class="tag">Python</span>
                 <span class="tag">C++</span>
@@ -52,12 +92,21 @@
         </div>
     </section>
 
-    <section id="education" class="section bg-light">
+    <div class="section-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-mark">◆</span>
+        <span class="divider-line"></span>
+    </div>
+
+    <section id="education" class="section bg-light reveal" data-num="02">
         <div class="container">
-            <h2 data-de="Ausbildung" data-en="Education">Ausbildung</h2>
-            
+            <div class="section-header">
+                <span class="section-num">02 //</span>
+                <h2 data-de="Ausbildung" data-en="Education">Ausbildung</h2>
+            </div>
+
             <div class="timeline">
-                
+
                 <div class="timeline-item">
                     <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
                         <p class="role" data-de="Master of Science, Wirtschaftsingenieurwesen" data-en="Master of Science, Industrial Engineering">Master of Science, Wirtschaftsingenieurwesen</p>
@@ -71,23 +120,12 @@
 
                 <div class="timeline-item">
                     <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
-                        <p class="role" data-de="Bachelor of Science, Mechanical Engineering" data-en="Bachelor of Science, Mechanical Engineering">Bachelor of Science, Mechanical Engineering</p>
-                        <p class="date">Apr 2026 – Apr 2028</p>
-                        <p class="click-hint" data-de="Klicke für Details ▼" data-en="Click for details ▼">Klicke für Details ▼</p>
-                    </div>
-                    <ul class="timeline-details" style="display: none;">
-                        <li data-de="Parallelstudium" data-en="Concurrent studies">Parallelstudium</li>
-                    </ul>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
                         <p class="role" data-de="Bachelor of Science, Wirtschaftsingenieurwesen" data-en="Bachelor of Science, Industrial Engineering">Bachelor of Science, Wirtschaftsingenieurwesen</p>
                         <p class="date">2021 – 2025</p>
                         <p class="click-hint" data-de="Klicke für Details ▼" data-en="Click for details ▼">Klicke für Details ▼</p>
                     </div>
                     <ul class="timeline-details" style="display: none;">
-                        <li data-de="Note: 2,0" data-en="Grade: 2.0">Note: 2,0</li>
+                        <li data-de="Note: 2,2" data-en="Grade: 2.2">Note: 2,2</li>
                         <li data-de="Aktivitäten und Gesellschaften: WIng AG" data-en="Activities and Societies: WIng AG">Aktivitäten und Gesellschaften: WIng AG</li>
                     </ul>
                 </div>
@@ -107,12 +145,21 @@
         </div>
     </section>
 
-    <section id="experience" class="section">
+    <div class="section-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-mark">◆</span>
+        <span class="divider-line"></span>
+    </div>
+
+    <section id="experience" class="section reveal" data-num="03">
         <div class="container">
-            <h2 data-de="Erfahrung" data-en="Experience">Erfahrung</h2>
-            
+            <div class="section-header">
+                <span class="section-num">03 //</span>
+                <h2 data-de="Erfahrung" data-en="Experience">Erfahrung</h2>
+            </div>
+
             <div class="timeline">
-                
+
                 <div class="timeline-item">
                     <div class="timeline-toggle"> <h3>Technische Universität Berlin</h3>
                         <p class="role" data-de="Studentische Hilfskraft (HiWi)" data-en="Student Assistant (HiWi)">Studentische Hilfskraft (HiWi)</p>
@@ -167,26 +214,41 @@
         </div>
     </section>
 
-    <section id="projects" class="section bg-light">
+    <div class="section-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-mark">◆</span>
+        <span class="divider-line"></span>
+    </div>
+
+    <section id="projects" class="section bg-light reveal" data-num="04">
         <div class="container">
-            <h2 data-de="Projekte" data-en="Projects">Projekte</h2>
-            
+            <div class="section-header">
+                <span class="section-num">04 //</span>
+                <h2 data-de="Projekte" data-en="Projects">Projekte</h2>
+            </div>
+
             <div class="project-full">
-                <h3 style="color: var(--text-dark); margin-bottom: 10px;" data-de="Bachelorarbeit" data-en="Bachelor Thesis">Bachelorarbeit</h3>
-                <h3 style="font-size: 1.2rem; margin-bottom: 20px;" data-de="Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen." data-en="Development of an adaptive algorithm to optimize the gripping process with flexible, leakage-tolerant suction grippers for controlled handling of flexible components.">Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen.</h3>
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag" data-de="// PROJEKT_01" data-en="// PROJECT_01">// PROJEKT_01</span>
+                <h3 class="project-title" data-de="Bachelorarbeit" data-en="Bachelor Thesis">Bachelorarbeit</h3>
+                <h3 class="project-subtitle" data-de="Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen." data-en="Development of an adaptive algorithm to optimize the gripping process with flexible, leakage-tolerant suction grippers for controlled handling of flexible components.">Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen.</h3>
 
                 <img src="assets/Roboter.png" alt="Roboter Setup" class="robot-img">
-                
+
                 <p id="thesis-overview" data-de="Zusammenfassung: Diese Arbeit befasst sich mit der Entwicklung eines lokalen Druckmesssystems und der Konstruktion funktionaler Hardwarekomponenten mittels CAD und 3D-Druck sowie der Programmierung eines Python-Algorithmus, der Leckagen in Echtzeit lokalisiert und durch autonome Ausgleichsbewegungen korrigiert." data-en="Overview: This thesis focuses on the development of a local pressure measurement system, the CAD design and 3D printing of functional components, and the implementation of a Python algorithm that enables real-time leakage localization and autonomous compensatory movements.">
                     <strong>Zusammenfassung:</strong> Diese Arbeit befasst sich mit der Entwicklung eines lokalen Druckmesssystems und der Konstruktion funktionaler Hardwarekomponenten mittels CAD und 3D-Druck sowie der Programmierung eines Python-Algorithmus, der Leckagen in Echtzeit lokalisiert und durch autonome Ausgleichsbewegungen korrigiert.
                 </p>
-                
-                <div style="margin-top: 15px; margin-bottom: 30px;">
+
+                <div class="project-actions">
                     <a href="assets/Abschlussarbeit_469593.pdf" class="btn" target="_blank"><i class="fas fa-file-pdf"></i> <span data-de="Vollständige Arbeit lesen" data-en="Read Full Thesis">Vollständige Arbeit lesen</span></a>
                 </div>
 
                 <div class="project-sub-sections">
-                    
+
                     <div class="sub-section">
                         <h4 class="sub-toggle" data-de="▶ CAD-Konstruktion" data-en="▶ CAD Design">▶ CAD-Konstruktion</h4>
                         <div class="sub-content" style="display: none;">
@@ -202,7 +264,7 @@
                         <h4 class="sub-toggle" data-de="▶ CFD-Simulation" data-en="▶ CFD Simulation">▶ CFD-Simulation</h4>
                         <div class="sub-content" style="display: none;">
                             <p data-de="Strömungssimulation in Inkscape/Ansys zur Analyse des Ansaugverhaltens." data-en="Flow simulation in Inkscape/Ansys to analyze suction behavior.">Strömungssimulation in Inkscape/Ansys zur Analyse des Ansaugverhaltens.</p>
-                            <img src="assets/CFD.png" alt="CFD Simulation" style="width: 100%; max-width: 600px; display: block; margin: 10px auto; border-radius: 5px;">
+                            <img src="assets/CFD.png" alt="CFD Simulation" class="cfd-img">
                        </div>
                     </div>
 
@@ -225,7 +287,7 @@ PLC_PORT = 851
 ROBOT_SPEED = 0.02
 ROBOT_ACCELERATION = 0.02
 WAIT_VALIDATION = 3.0
-WAIT_PRESSURE = 2.0 
+WAIT_PRESSURE = 2.0
 
 
 REF_TABLE = {
@@ -249,7 +311,7 @@ def check_grip_success(plc, ur_controller, current_setpoint):
     val3 = plc.read_by_name("GVL.P_in[3]") - 1
     val4 = plc.read_by_name("GVL.P_in[4]")
     values = np.array([val1, val2, val3, val4])
-    
+
     avg_p = np.mean(values)
     max_diff = np.max(values) - np.min(values)
     p_ref = get_reference_pressure(current_setpoint)
@@ -265,12 +327,12 @@ def check_grip_success(plc, ur_controller, current_setpoint):
     # Sensoren identifizieren
     max_val = np.max(values)
     leak_indices = np.where(values == max_val)[0]
-    
+
     axis_map = {0: "-Y", 1: "-X", 2: "+Y", 3: "+X"}
     affected_axes = [axis_map[i] for i in leak_indices]
     leak_info_str = " & ".join(affected_axes)
-    
-    primary_leak_sensor = leak_indices[0] + 1 
+
+    primary_leak_sensor = leak_indices[0] + 1
 
     is_homogenous = max_diff <= 2.0
     is_near_ref = dev_ref <= 4.0
@@ -293,33 +355,33 @@ def move_away_from_leak(plc, ur_controller, setpoint, initial_leak_sensor):
     print("\n🔹 Starte Strategie: VERSCHIEBUNG")
     step_up = 0.10
     step_away = 0.02
-    
+
     # Speed-Vektor [unused, unused, speed, acc]
     move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
-    
+
     last_leak = initial_leak_sensor
     iteration = 1
-    limit = 10 
-    
+    limit = 10
+
     while iteration <= limit:
         print(f"\n  ↪️ Iteration {iteration} (Korrektur Sensor {last_leak})...")
-        
+
         move = [0.0]*6
         if last_leak == 1: move[1] = step_away
         elif last_leak == 3: move[1] = -step_away
         elif last_leak == 2: move[0] = step_away
         elif last_leak == 4: move[0] = -step_away
-        
+
         # Vakuum aus
         ur_controller.set_robot_analog_output(0, 0)
-        
-        time.sleep(WAIT_VALIDATION) 
-        
+
+        time.sleep(WAIT_VALIDATION)
+
         # Hochfahren
         ur_controller.move_robot_relative_from_current_position(
             [0,0,step_up,0,0,0], robot_speed=move_params, asynchronous=False
         )
-        
+
         time.sleep(WAIT_VALIDATION)
 
         # Verschieben
@@ -338,11 +400,11 @@ def move_away_from_leak(plc, ur_controller, setpoint, initial_leak_sensor):
         time.sleep(WAIT_VALIDATION)
 
         status, vals, curr_leak = check_grip_success(plc, ur_controller, setpoint)
-        
+
         if status == "Success":
             print("🎉 Erfolg! Griff korrigiert.")
             return True
-        
+
         if "Leakage" in status:
             opposite = {1: 3, 3: 1, 2: 4, 4: 2}
             if curr_leak and curr_leak == opposite.get(last_leak):
@@ -352,27 +414,27 @@ def move_away_from_leak(plc, ur_controller, setpoint, initial_leak_sensor):
         else:
             print("❌ Abbruch: Kein Griff mehr.")
             return False
-            
+
         iteration += 1
     return False
 
 # Strategie Rotation
 def rotate_around_leak(plc, ur_controller, setpoint):
     print("\n🔹 Starte Strategie: ROTATION")
-    
+
     val1 = plc.read_by_name("GVL.P_in[1]") + 1
     val2 = plc.read_by_name("GVL.P_in[2]")
     val3 = plc.read_by_name("GVL.P_in[3]") - 1
     val4 = plc.read_by_name("GVL.P_in[4]")
     pressures = np.array([val1, val2, val3, val4])
-    
+
     sensor_positions = np.array([
-        [0.0, -0.0225, 0.0], [-0.0225, 0.0, 0.0], 
+        [0.0, -0.0225, 0.0], [-0.0225, 0.0, 0.0],
         [0.0, 0.0225, 0.0],  [0.0225, 0.0, 0.0]
     ])
 
     min_pressure = np.min(pressures)
-    weights = pressures - min_pressure + 1e-6 
+    weights = pressures - min_pressure + 1e-6
     L_vec = np.average(sensor_positions, axis=0, weights=weights)
     print(f"📊 Drücke: {pressures}")
     print(f"💨 Leckagevektor L: {L_vec}")
@@ -380,13 +442,13 @@ def rotate_around_leak(plc, ur_controller, setpoint):
     Z_vec = np.array([0.0, 0.0, 1.0])
     R_vec = np.cross(L_vec, Z_vec)
     norm_R = np.linalg.norm(R_vec)
-    
+
     if norm_R < 1e-6:
         print("⚠️ Keine klare Leckagerichtung. Abbruch.")
         return False
 
     R_norm = R_vec / norm_R
-    
+
     rotation_angle = -0.6
     dist_retract = 0.010
     dist_approach_xy = 0.060
@@ -399,7 +461,7 @@ def rotate_around_leak(plc, ur_controller, setpoint):
         dir_L = L_vec / np.linalg.norm(L_vec)
     else:
         dir_L = np.array([0,0,0])
-    
+
     print(f"🔄 Ablauf: Rücksetzen -> Drehen -> Auffahren")
 
     move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
@@ -411,7 +473,7 @@ def rotate_around_leak(plc, ur_controller, setpoint):
     # Rücksetzen
     vec_retract = dir_L * dist_retract
     ur_controller.move_robot_relative_from_current_position(
-        [vec_retract[0], vec_retract[1], 0, 0, 0, 0], 
+        [vec_retract[0], vec_retract[1], 0, 0, 0, 0],
         robot_speed=move_params, asynchronous=False
     )
     time.sleep(0.5)
@@ -419,23 +481,23 @@ def rotate_around_leak(plc, ur_controller, setpoint):
     # Drehen
     print(f"🤖 Rotiere...")
     ur_controller.move_robot_relative_from_current_position(
-        [0, 0, 0, rot_cmd[0], rot_cmd[1], rot_cmd[2]], 
+        [0, 0, 0, rot_cmd[0], rot_cmd[1], rot_cmd[2]],
         robot_speed=move_params, asynchronous=False
     )
     time.sleep(0.5)
 
     # Auffahren
     vec_approach = -dir_L * dist_approach_xy
-    
+
     # Vakuum AN vor Kontakt
     ur_controller.set_robot_analog_output(0, setpoint)
     time.sleep(0.5)
-    
+
     ur_controller.move_robot_relative_from_current_position(
-        [vec_approach[0], vec_approach[1], -dist_approach_z, 0, 0, 0], 
+        [vec_approach[0], vec_approach[1], -dist_approach_z, 0, 0, 0],
         robot_speed=move_params, asynchronous=False
     )
-    
+
     # Warten auf Druckstabilisierung
     time.sleep(WAIT_PRESSURE)
 
@@ -455,13 +517,13 @@ def robot_control(ur_controller, stop_event):
         print(f"❌ Fehler bei PLC Verbindung: {e}")
         stop_event.set()
         return
-    
+
     print("\n🏁 Start: Initialer Griffversuch")
     ur_controller.set_robot_analog_output(0, current_setpoint)
-    
+
     # Warten auf Druckaufbau initial
     time.sleep(WAIT_PRESSURE)
-    
+
     status, values, leak_sensor_id = check_grip_success(plc, ur_controller, current_setpoint)
 
     if status == "Success":
@@ -479,26 +541,26 @@ def robot_control(ur_controller, stop_event):
                 print("❌ Fatal: Leckage erkannt, Sensor unklar.")
         elif STRATEGY_SELECTION == 1:
             success = rotate_around_leak(plc, ur_controller, current_setpoint)
-            
+
         if success: print("✅ Kompensation erfolgreich!")
         else: print("❌ Kompensation fehlgeschlagen.")
 
     print("\n🏁 Programmende.")
     ur_controller.set_robot_analog_output(0, 0)
-    
+
     move_params = [0.0, 0.0, ROBOT_SPEED, ROBOT_ACCELERATION]
 
     # Sicherheitsrückzug
     ur_controller.move_robot_relative_from_current_position(
         [0,0,0.1,0,0,0], robot_speed=move_params, asynchronous=False
     )
-    
+
     plc.close()
     stop_event.set()
 
 def stop_robot(ur_controller, stop_event):
     while not stop_event.is_set():
-        if not ur_controller.get_robot_digital_input_state(4): 
+        if not ur_controller.get_robot_digital_input_state(4):
             print("🛑 NOT-HALT ausgelöst!")
             ur_controller.stop_robot_linear_movement_jointspace()
             stop_event.set()
@@ -513,7 +575,7 @@ def main():
     stop_event = threading.Event()
     t1 = threading.Thread(target=robot_control, args=(ur_controller, stop_event))
     t2 = threading.Thread(target=stop_robot, args=(ur_controller, stop_event))
-    
+
     t1.start()
     t2.start()
     t1.join()
@@ -528,28 +590,50 @@ if __name__ == "__main__":
                 </div>
             </div>
 
-            <!-- New Project Section -->
             <div class="project-full" style="margin-top: 40px;">
-                <h3 style="color: var(--text-dark); margin-bottom: 10px;" data-de="Vakuumgreifer für Beutel" data-en="Vacuum Gripper for Bags">Vakuumgreifer für Beutel</h3>
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag" data-de="// PROJEKT_02" data-en="// PROJECT_02">// PROJEKT_02</span>
+                <h3 class="project-title" data-de="Vakuumgreifer für Beutel" data-en="Vacuum Gripper for Bags">Vakuumgreifer für Beutel</h3>
                 <p data-de="Entwicklung und Konstruktion eines spezialisierten Greifersystems zur effizienten Handhabung von Beutelverpackungen." data-en="Development and design of a specialized gripper system for efficient handling of bag packaging.">Entwicklung und Konstruktion eines spezialisierten Greifersystems zur effizienten Handhabung von Beutelverpackungen.</p>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="section">
+    <div class="section-divider" aria-hidden="true">
+        <span class="divider-line"></span>
+        <span class="divider-mark">◆</span>
+        <span class="divider-line"></span>
+    </div>
+
+    <section id="contact" class="section reveal" data-num="05">
         <div class="container">
-            <h2 data-de="Kontakt" data-en="Get In Touch">Kontakt</h2>
-            
-            <div style="margin-top: 20px; display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <div class="section-header">
+                <span class="section-num">05 //</span>
+                <h2 data-de="Kontakt" data-en="Get In Touch">Kontakt</h2>
+            </div>
+
+            <p class="contact-tagline" data-de="// Lass uns sprechen — Projekte, Kooperationen, Ideen." data-en="// Let's talk — projects, collaborations, ideas.">// Lass uns sprechen — Projekte, Kooperationen, Ideen.</p>
+
+            <div class="contact-buttons">
                 <a href="mailto:frederik272003@web.de" class="btn">
                     <i class="fas fa-paper-plane"></i> Email
                 </a>
-                <a href="https://www.linkedin.com/in/frederik-hoeft-b9547b310/" target="_blank" class="btn">
+                <a href="https://www.linkedin.com/in/frederik-hoeft-b9547b310/" target="_blank" class="btn btn-outline">
                     <i class="fab fa-linkedin"></i> LinkedIn
                 </a>
             </div>
         </div>
     </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="footer-line">// © 2026 FREDERIK HOEFT — TU BERLIN</span>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
