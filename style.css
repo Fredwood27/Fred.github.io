@@ -39,14 +39,13 @@ body {
     background: var(--bg);
     overflow-x: hidden;
     position: relative;
-    isolation: isolate;
 }
 
 /* Subtle dot-grid background */
 .grid-bg {
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: 0;
     pointer-events: none;
     background-image:
         radial-gradient(circle at 1px 1px, rgba(251, 146, 60, 0.07) 1px, transparent 0);
@@ -1045,79 +1044,3 @@ html.reveal-loaded .reveal {
     }
 }
 
-/* =========================================
-   ROTATING GEARS BACKGROUND
-   ========================================= */
-.tech-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-    overflow: hidden;
-}
-
-.gear {
-    position: absolute;
-    color: var(--primary);
-    opacity: 0.18;
-    filter: drop-shadow(0 0 6px var(--primary-glow));
-}
-
-.gear-1 {
-    width: 420px;
-    height: 420px;
-    bottom: -100px;
-    left: -120px;
-}
-
-.gear-2 {
-    width: 280px;
-    height: 280px;
-    top: 12vh;
-    right: -90px;
-    color: var(--accent);
-    opacity: 0.13;
-}
-
-.gear-3 {
-    width: 200px;
-    height: 200px;
-    bottom: 30vh;
-    right: 18vw;
-    opacity: 0.10;
-}
-
-.gear-spin,
-.gear-spin-rev {
-    transform-origin: center;
-    transform-box: view-box;
-    animation: gearRotate 28s linear infinite;
-}
-
-.gear-spin-rev {
-    animation: gearRotateRev 36s linear infinite;
-}
-
-.gear-3 .gear-spin {
-    animation-duration: 18s;
-}
-
-@keyframes gearRotate {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-@keyframes gearRotateRev {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(-360deg); }
-}
-
-@media (max-width: 768px) {
-    .gear-1 { width: 280px; height: 280px; bottom: -80px; left: -100px; }
-    .gear-2 { width: 200px; height: 200px; top: 8vh; right: -70px; }
-    .gear-3 { display: none; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .gear-spin, .gear-spin-rev { animation: none; }
-}
