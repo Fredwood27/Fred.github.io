@@ -501,45 +501,45 @@ h2::after { left: calc(100% + 18px); }
 }
 
 /* =========================================
-   REVEAL TRANSITIONS — engineering wipe
+   REVEAL TRANSITIONS
    ========================================= */
 .reveal {
     opacity: 0;
-    transform: translateY(60px) scale(0.985);
-    filter: blur(6px);
-    clip-path: inset(0 0 100% 0);
-    -webkit-clip-path: inset(0 0 100% 0);
+    transform: translateY(48px);
     transition:
-        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s ease,
-        clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1),
-        -webkit-clip-path 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .reveal.is-visible {
     opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-    clip-path: inset(0 0 0 0);
-    -webkit-clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+}
+
+/* Safety net: if JS is disabled or observer fails, show after a beat */
+.no-js .reveal,
+html.reveal-loaded .reveal {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Section divider scan-in */
 .section-divider .divider-line {
-    transform: scaleX(0);
+    transform: scaleX(0.2);
     transform-origin: center;
-    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    opacity: 0.4;
+    transition: transform 1s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.6s ease;
 }
 
 .section-divider .divider-mark {
     opacity: 0;
     transform: scale(0.4) rotate(-90deg);
-    transition: opacity 0.6s ease 0.5s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.4s;
+    transition: opacity 0.6s ease 0.4s, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.3s;
 }
 
 .section-divider.is-visible .divider-line {
     transform: scaleX(1);
+    opacity: 1;
 }
 
 .section-divider.is-visible .divider-mark {

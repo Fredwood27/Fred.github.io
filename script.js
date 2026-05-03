@@ -107,23 +107,43 @@ document.querySelectorAll('.sub-toggle').forEach(toggle => {
 // =========================================
 const revealEls = document.querySelectorAll('.reveal, .section-divider');
 
+function revealNow(el) {
+    el.classList.add('is-visible');
+}
+
 if ('IntersectionObserver' in window) {
     const io = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
+                revealNow(entry.target);
                 io.unobserve(entry.target);
             }
         });
     }, {
-        threshold: 0.12,
-        rootMargin: '0px 0px -8% 0px'
+        threshold: 0.05,
+        rootMargin: '0px 0px -5% 0px'
     });
 
     revealEls.forEach(el => io.observe(el));
+
+    // On load, immediately reveal anything already in the viewport
+    // (covers cases where observer is slow to fire on first paint)
+    window.addEventListener('load', () => {
+        revealEls.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                revealNow(el);
+            }
+        });
+    });
+
+    // Hard safety net: after 2s, force-reveal everything
+    // so the page can never be stuck invisible.
+    setTimeout(() => {
+        revealEls.forEach(revealNow);
+    }, 2000);
 } else {
-    // Fallback for very old browsers
-    revealEls.forEach(el => el.classList.add('is-visible'));
+    revealEls.forEach(revealNow);
 }
 
 // =========================================
