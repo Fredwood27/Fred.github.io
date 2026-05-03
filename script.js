@@ -63,7 +63,18 @@ langToggleBtn.addEventListener('click', () => {
     });
 
     document.querySelectorAll('h2, h3, h4, .btn, .role, .click-hint, .timeline-details li').forEach(el => {
-        if (el.dataset[newLang] && el.children.length === 0) {
+        if (!el.dataset[newLang]) return;
+
+        // Buttons with an arrow icon: keep the arrow span, swap the text
+        const arrow = el.querySelector('.btn-arrow');
+        if (arrow) {
+            el.innerHTML = '';
+            el.appendChild(arrow);
+            el.appendChild(document.createTextNode(' ' + el.dataset[newLang]));
+            return;
+        }
+
+        if (el.children.length === 0) {
             el.textContent = el.dataset[newLang];
         }
     });
