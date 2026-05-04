@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fb923c"/>
+      <stop offset="100%" stop-color="#f97316"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Engineering corner brackets -->
+  <g fill="none" stroke="#fb923c" stroke-width="2.2" stroke-linecap="square">
+    <polyline points="4,12 4,4 12,4"/>
+    <polyline points="60,12 60,4 52,4"/>
+    <polyline points="4,52 4,60 12,60"/>
+    <polyline points="60,52 60,60 52,60"/>
+  </g>
+
+  <!-- Letters F H, mono-block style -->
+  <g fill="url(#amber)">
+    <!-- F -->
+    <rect x="14" y="16" width="4.5" height="32"/>
+    <rect x="14" y="16" width="14" height="4.5"/>
+    <rect x="14" y="29" width="11" height="4"/>
+
+    <!-- H -->
+    <rect x="36" y="16" width="4.5" height="32"/>
+    <rect x="45.5" y="16" width="4.5" height="32"/>
+    <rect x="36" y="29.5" width="14" height="4"/>
+  </g>
+
+  <!-- Subtle scan accent -->
+  <line x1="14" y1="52" x2="50" y2="52" stroke="#22d3ee" stroke-width="1" opacity="0.6"/>
+</svg>
