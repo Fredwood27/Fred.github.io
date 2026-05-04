@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bachelorarbeit — Kurzfassung | Frederik Hoeft</title>
+
+    <link rel="icon" href="assets/Website-Bild.jfif" type="image/jpeg">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .abstract-page {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        .abstract-page .project-full {
+            margin-top: 32px;
+        }
+        .abstract-page h1 {
+            font-family: var(--mono);
+            font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .abstract-page h1 .highlight {
+            color: var(--primary);
+        }
+        .abstract-page .meta-line {
+            font-family: var(--mono);
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 32px;
+        }
+        .abstract-page .lang-block {
+            margin-top: 32px;
+        }
+        .abstract-page .lang-block h2 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--primary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+        }
+        .abstract-page .lang-block p {
+            margin-bottom: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .abstract-page .back-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .abstract-page .divider-mini {
+            margin: 40px 0;
+            border: 0;
+            border-top: 1px dashed var(--line);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">F.HOEFT</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-cursor">_</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects"><span class="nav-num">04</span> Projekte</a></li>
+                <li><a href="index.html">⌂ Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="abstract-page">
+        <div class="container">
+
+            <div class="project-full">
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag">// PROJEKT_01 / ABSTRACT</span>
+                <h1>Bachelorarbeit — <span class="highlight">Kurzfassung</span></h1>
+                <p class="meta-line">// Frederik Hoeft &nbsp;·&nbsp; TU Berlin &nbsp;·&nbsp; Dezember 2025</p>
+
+                <h3 class="project-subtitle">Entwicklung eines adaptiven Algorithmus zur Optimierung des Greifprozesses mit flexiblen, leckagetoleranten Sauggreifern zur kontrollierten Handhabung von flexiblen Bauteilen.</h3>
+
+                <div class="lang-block">
+                    <h2>Kurzfassung (Deutsch)</h2>
+                    <p>In der modernen flexiblen Produktion gewinnen universelle Greifersysteme immer mehr an Bedeutung, um die Handhabung variierender Bauteilgeometrien in unstrukturierten Umgebungen zu ermöglichen. Granulare Vakuumgreifer basierend auf dem Granular-Jamming-Prinzip bieten hierfür großes Potential. Dieses Potential ist jedoch stark abhängig von Leckage, die aufgrund von Undichtigkeiten zwischen Greifer und Handhabungsobjekt entsteht und die Prozessstabilität beeinträchtigt. Bisherige Systeme überprüfen den Unterdruck meist nur global an einem Messpunkt. Dies lässt jedoch keine Rückschlüsse auf die Position und Art der Leckage zu.</p>
+
+                    <p>Diese Arbeit entwickelt und untersucht einen neuen Ansatz, bei dem die Druckverteilung innerhalb des Greifers lokal an mehreren Stellen gemessen wird. Hierfür wurde ein granularer Vakuumgreifer modifiziert und mit vier Druckmessstellen ausgestattet. Diese erlauben es, die Druckverhältnisse in der Nähe der Kontaktfläche zum Handhabungsobjekt zu erfassen. Auf Basis dieser Sensordaten wurde ein adaptiver Algorithmus entwickelt, der Leckage räumlich lokalisiert. Bei Erkennung von Leckage kann er autonom zwei unterschiedliche Strategien zur Kompensation fahren — entweder durch eine translatorische Verschiebung oder eine Rotation des Greifers.</p>
+
+                    <p>Die experimentelle Validierung an dem kollaborativen Industrieroboter UR10e der Firma Universal Robots zeigte den Erfolg dieses Ansatzes. In den durchgeführten Versuchen konnte gezeigt werden, dass die Lokalisation von Leckage möglich, reproduzierbar und effektiv ist. In den Versuchen wirkte sich Leckage exponentiell negativ auf den Druckaufbau aus. Die rotative Strategie zur Leckagekompensation war aufgrund der Steifigkeit des Greifers durch die integrierten Messstellen limitiert. Die translatorische Verschiebung zeigte herausragende Ergebnisse. Bei den durchgeführten „Pick-Versuchen" konnte eine Erfolgsquote von 100&nbsp;% bei der Korrektur von Fehlgriffen erzielt werden. Diese Korrektur ermöglichte nicht nur einen erfolgreichen Griff nach Fehlgriffen, sondern auch durch die Optimierung des Griffs eine Reduktion der Saugleistung. Die Energieeffizienz des Systems kann somit verbessert werden.</p>
+
+                    <p>Mit dieser Arbeit wird gezeigt, dass lokale Druckmessungen eine Erkennung und Lokalisierung von Leckage ermöglichen und somit die Prozesssicherheit und Effizienz von leckagetoleranten Vakuumgreifern erhöhen.</p>
+                </div>
+
+                <hr class="divider-mini">
+
+                <div class="lang-block">
+                    <h2>Abstract (English)</h2>
+                    <p>In modern flexible production, universal gripper systems are becoming increasingly important for handling varying component geometries in unstructured environments. Granular vacuum grippers based on the granular jamming principle offer great potential in this regard. However, this potential is strongly dependent on leakage, which arises from gaps between the gripper and the handling object and impairs process stability. Existing systems typically monitor the vacuum only globally at a single measurement point. This does not allow any conclusions to be drawn about the position or type of leakage.</p>
+
+                    <p>This thesis develops and investigates a new approach in which the pressure distribution inside the gripper is measured locally at several points. For this purpose, a granular vacuum gripper was modified and equipped with four pressure measurement points. These make it possible to capture the pressure conditions near the contact surface with the handling object. Based on this sensor data, an adaptive algorithm was developed that spatially localizes leakage. Upon detection of leakage, the algorithm can autonomously execute two different compensation strategies — either a translational shift or a rotation of the gripper.</p>
+
+                    <p>Experimental validation on the collaborative industrial robot UR10e by Universal Robots demonstrated the success of this approach. The experiments showed that the localization of leakage is feasible, reproducible, and effective. Leakage was found to have an exponentially negative effect on pressure build-up. The rotational compensation strategy was limited by the stiffness of the gripper introduced by the integrated measurement points. The translational shift, in contrast, produced outstanding results. In the "pick experiments" performed, a success rate of 100&nbsp;% was achieved in correcting failed grips. This correction not only enabled a successful grip after failure, but also reduced the required suction power through grip optimization, thereby improving the system's energy efficiency.</p>
+
+                    <p>This work demonstrates that local pressure measurements enable the detection and localization of leakage, and thereby increase the process reliability and efficiency of leakage-tolerant vacuum grippers.</p>
+                </div>
+
+                <div class="back-row">
+                    <a href="index.html#projects" class="btn"><span class="btn-arrow">◂</span> Zurück zu Projekten</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="footer-line">// © 2026 FREDERIK HOEFT — TU BERLIN</span>
+        </div>
+    </footer>
+
+</body>
+</html>

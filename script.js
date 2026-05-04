@@ -22,7 +22,7 @@ const specialTranslations = {
 };
 
 const navLabelMap = {
-    about: { de: 'Über Mich', en: 'About' },
+    about: { de: 'Über mich', en: 'About' },
     education: { de: 'Ausbildung', en: 'Education' },
     experience: { de: 'Erfahrung', en: 'Experience' },
     projects: { de: 'Projekte', en: 'Projects' },
