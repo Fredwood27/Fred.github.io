@@ -1,10 +1,24 @@
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (href === '#' || href.length < 2) return;
+        const target = document.querySelector(href);
+        if (!target) return;
+
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+
+        // If targeting a collapsed sub-section, expand it before scrolling
+        if (target.classList.contains('sub-section')) {
+            const toggle = target.querySelector('.sub-toggle');
+            const content = target.querySelector('.sub-content');
+            if (content && (content.style.display === 'none' || content.style.display === '')) {
+                content.style.display = 'block';
+                if (toggle) toggle.textContent = toggle.textContent.replace('▶', '▼');
+            }
+        }
+
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 });
 
