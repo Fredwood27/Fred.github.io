@@ -605,12 +605,6 @@ a.tag-link {
     display: inline-block;
 }
 
-a.tag-link::after {
-    content: " ↗";
-    font-size: 0.7em;
-    opacity: 0.6;
-}
-
 /* =========================================
    TIMELINE
    ========================================= */
