@@ -197,3 +197,33 @@ document.querySelectorAll('.nav-links a').forEach(link => {
         menuIcon.classList.add('fa-bars');
     });
 });
+
+// =========================================
+// Impressum Modal
+// =========================================
+const imprintModal = document.getElementById('imprint-modal');
+const imprintOpen = document.getElementById('imprint-open');
+
+function openImprint() {
+    imprintModal.classList.add('is-open');
+    imprintModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+}
+
+function closeImprint() {
+    imprintModal.classList.remove('is-open');
+    imprintModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+}
+
+if (imprintOpen && imprintModal) {
+    imprintOpen.addEventListener('click', openImprint);
+    imprintModal.querySelectorAll('[data-close]').forEach(el => {
+        el.addEventListener('click', closeImprint);
+    });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && imprintModal.classList.contains('is-open')) {
+            closeImprint();
+        }
+    });
+}

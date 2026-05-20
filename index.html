@@ -59,11 +59,6 @@
                 <span class="highlight">Frederik Hoeft</span>
             </h1>
             <p class="hero-sub" data-de="M.Sc. Wirtschaftsingenieurwesen Student an der TU Berlin" data-en="M.Sc. Industrial Engineering Student at TU Berlin">M.Sc. Wirtschaftsingenieurwesen Student an der TU Berlin</p>
-            <div class="hero-specs">
-                <span class="spec"><span class="spec-key">LOC</span><span class="spec-val">Berlin, DE</span></span>
-                <span class="spec"><span class="spec-key">FIELD</span><span class="spec-val" data-de="Robotik / CAD / Python" data-en="Robotics / CAD / Python">Robotik / CAD / Python</span></span>
-                <span class="spec"><span class="spec-key">STATUS</span><span class="spec-val pulse" data-de="Aktiv" data-en="Active">Aktiv</span></span>
-            </div>
             <a href="#projects" class="btn" data-de="Meine Projekte" data-en="My Projects">
                 <span class="btn-arrow">▸</span> Meine Projekte
             </a>
@@ -374,8 +369,66 @@ def check_grip_success(plc, ur_controller, current_setpoint):
     <footer class="site-footer">
         <div class="container">
             <span class="footer-line">// © 2026 FREDERIK HOEFT — TU BERLIN</span>
+            <button type="button" class="footer-link" id="imprint-open" data-de="Impressum" data-en="Legal Notice">Impressum</button>
         </div>
     </footer>
+
+    <div class="modal" id="imprint-modal" aria-hidden="true" role="dialog" aria-labelledby="imprint-title">
+        <div class="modal-backdrop" data-close></div>
+        <div class="modal-panel" role="document">
+            <div class="modal-corner tl"></div>
+            <div class="modal-corner tr"></div>
+            <div class="modal-corner bl"></div>
+            <div class="modal-corner br"></div>
+
+            <button type="button" class="modal-close" aria-label="Close" data-close>×</button>
+
+            <span class="modal-tag" data-de="// RECHTLICHES" data-en="// LEGAL">// RECHTLICHES</span>
+            <h3 class="modal-title" id="imprint-title" data-de="Impressum" data-en="Legal Notice">Impressum</h3>
+
+            <div class="imprint-block">
+                <h4 data-de="Angaben gemäß § 5 TMG" data-en="Information according to § 5 TMG">Angaben gemäß § 5 TMG</h4>
+                <p>
+                    Frederik Hoeft<br>
+                    Geibelstraße 26<br>
+                    12205 Berlin<br>
+                    <span data-de="Deutschland" data-en="Germany">Deutschland</span>
+                </p>
+            </div>
+
+            <div class="imprint-block">
+                <h4 data-de="Kontakt" data-en="Contact">Kontakt</h4>
+                <p>
+                    <span data-de="Telefon:" data-en="Phone:">Telefon:</span> +49 159 0245 6565<br>
+                    <span data-de="E-Mail:" data-en="Email:">E-Mail:</span> <a href="mailto:frederik272003@web.de">frederik272003@web.de</a>
+                </p>
+            </div>
+
+            <div class="imprint-block">
+                <h4 data-de="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV" data-en="Responsible for content according to § 55 Abs. 2 RStV">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h4>
+                <p>
+                    Frederik Hoeft<br>
+                    Geibelstraße 26<br>
+                    12205 Berlin
+                </p>
+            </div>
+
+            <div class="imprint-block">
+                <h4 data-de="Haftung für Inhalte" data-en="Liability for Content">Haftung für Inhalte</h4>
+                <p data-de="Die Inhalte dieser Seite wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich." data-en="The contents of this website were created with the greatest possible care. However, no guarantee can be given for the correctness, completeness, and timeliness of the content. As a service provider, I am responsible for my own content on these pages in accordance with § 7 para. 1 TMG and general laws.">Die Inhalte dieser Seite wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte kann jedoch keine Gewähr übernommen werden. Als Diensteanbieter bin ich gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.</p>
+            </div>
+
+            <div class="imprint-block">
+                <h4 data-de="Haftung für Links" data-en="Liability for Links">Haftung für Links</h4>
+                <p data-de="Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich." data-en="This website contains links to external third-party websites over whose content I have no control. The respective provider or operator of the linked pages is always responsible for their content.">Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte ich keinen Einfluss habe. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+            </div>
+
+            <div class="imprint-block">
+                <h4 data-de="Urheberrecht" data-en="Copyright">Urheberrecht</h4>
+                <p data-de="Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors." data-en="The content and works on this website created by the site operator are subject to German copyright law. Duplication, processing, and any kind of use beyond the limits of copyright law require the written consent of the author.">Die durch den Seitenbetreiber erstellten Inhalte und Werke auf dieser Website unterliegen dem deutschen Urheberrecht. Vervielfältigung, Bearbeitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des Autors.</p>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
