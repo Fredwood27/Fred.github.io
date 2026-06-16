@@ -998,6 +998,18 @@ a.tag-link {
     padding: 8px;
 }
 
+/* Solarapp-Dashboard-Screenshots: breites, randvolles Format */
+.app-shot {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 14px auto 0;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--bg);
+    padding: 6px;
+}
+
 /* Sub-sections */
 .project-sub-sections {
     margin-top: 26px;
@@ -1069,6 +1081,10 @@ a.tag-link {
 
 .cad-figure-1 img { max-height: 280px; max-width: 320px; }
 .cad-figure-2 img { max-height: 220px; max-width: 260px; }
+
+/* Projekt 01: CAD-Bilder auf eine moderate, einheitliche Größe begrenzen */
+#cad-section .cad-figure-1 img { max-height: 230px; max-width: 200px; }
+#cad-section .cad-figure-2 img { max-height: 230px; max-width: 130px; }
 
 @media (max-width: 600px) {
     .cad-figure-1 img,

@@ -82,7 +82,7 @@
                 <a href="#python-section" class="tag tag-link">Python</a>
                 <a href="#cfd-section" class="tag tag-link">CFD</a>
                 <a href="#cad-section" class="tag tag-link" data-de="CAD-Konstruktion" data-en="CAD Design">CAD-Konstruktion</a>
-                <a href="#projects" class="tag tag-link" data-de="SQL" data-en="SQL">SQL</a>
+                <a href="#ansys-section" class="tag tag-link" data-de="CAE-Simulation" data-en="CAE Simulation">CAE-Simulation</a>
             </div>
         </div>
     </section>
@@ -335,6 +335,69 @@ def check_grip_success(plc, ur_controller, current_setpoint):
                             </div>
                         </div>
                     </div>
+
+                    <div class="sub-section">
+                        <h4 class="sub-toggle" data-de="▶ Test-Setup (Arduino & Wägezellen)" data-en="▶ Test Setup (Arduino & Load Cells)">▶ Test-Setup (Arduino & Wägezellen)</h4>
+                        <div class="sub-content" style="display: none;">
+                            <p data-de="Aufbau eines Teststands auf Basis von Arduino-Boards und Wägezellen zur messtechnischen Erfassung der Greif- und Haltekräfte. Die Wägezellen liefern die Kraftdaten, die über das Arduino-Board eingelesen und ausgewertet werden, um die verschiedenen Greiferdesigns reproduzierbar miteinander zu vergleichen." data-en="Construction of a test rig based on Arduino boards and load cells to measure the gripping and holding forces. The load cells provide the force data, which is read in and evaluated via the Arduino board in order to compare the different gripper designs in a reproducible manner.">Aufbau eines Teststands auf Basis von Arduino-Boards und Wägezellen zur messtechnischen Erfassung der Greif- und Haltekräfte. Die Wägezellen liefern die Kraftdaten, die über das Arduino-Board eingelesen und ausgewertet werden, um die verschiedenen Greiferdesigns reproduzierbar miteinander zu vergleichen.</p>
+                        </div>
+                    </div>
+
+                    <div class="sub-section" id="ansys-section">
+                        <h4 class="sub-toggle" data-de="▶ Simulation mit Ansys" data-en="▶ Simulation with Ansys">▶ Simulation mit Ansys</h4>
+                        <div class="sub-content" style="display: none;">
+                            <p data-de="Strukturmechanische Simulation des Greifers in Ansys zur Bewertung der Spannungen und Verformungen unter Last. Das Spannungsbild zeigt die Maximal- und Minimalwerte im belasteten Bereich und dient der Auslegung und Optimierung des Greiferdesigns." data-en="Structural simulation of the gripper in Ansys to evaluate stresses and deformations under load. The stress plot shows the maximum and minimum values in the loaded region and supports the design and optimization of the gripper.">Strukturmechanische Simulation des Greifers in Ansys zur Bewertung der Spannungen und Verformungen unter Last. Das Spannungsbild zeigt die Maximal- und Minimalwerte im belasteten Bereich und dient der Auslegung und Optimierung des Greiferdesigns.</p>
+                            <img src="assets/Beutelgreifer_Ansys.png" alt="Ansys Simulation" class="cfd-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-full" style="margin-top: 40px;">
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag" data-de="// PROJEKT_03" data-en="// PROJECT_03">// PROJEKT_03</span>
+                <h3 class="project-title" data-de="Solarapp – Photovoltaik-Dashboard" data-en="Solarapp – Photovoltaic Dashboard">Solarapp – Photovoltaik-Dashboard</h3>
+                <p data-de="Selbst entwickelte Server-Anwendung, die einen Deye-Hybrid-Wechselrichter (SUN-8K-SG01HP3) lokal ausliest und Live-Werte, Verläufe und eine Wirtschaftlichkeitsrechnung in einem Web-Dashboard darstellt." data-en="A self-developed server application that reads a Deye hybrid inverter (SUN-8K-SG01HP3) locally and presents live values, historical trends and a profitability analysis in a web dashboard.">Selbst entwickelte Server-Anwendung, die einen Deye-Hybrid-Wechselrichter (SUN-8K-SG01HP3) lokal ausliest und Live-Werte, Verläufe und eine Wirtschaftlichkeitsrechnung in einem Web-Dashboard darstellt.</p>
+                <p style="margin-top: 12px;" data-de="Die App wird als Server (FastAPI/Uvicorn) gehostet und liest die Wechselrichter-Daten rein lokal über den Solarman-Logger im selben Netzwerk aus (Modbus/TCP auf Port 8899, ohne Cloud, read-only). Die Werte werden in einer SQLite-Datenbank gespeichert und im Browser visualisiert." data-en="The app is hosted as a server (FastAPI/Uvicorn) and reads the inverter data purely locally via the Solarman logger on the same network (Modbus/TCP on port 8899, no cloud, read-only). The values are stored in a SQLite database and visualized in the browser.">Die App wird als Server (FastAPI/Uvicorn) gehostet und liest die Wechselrichter-Daten rein lokal über den Solarman-Logger im selben Netzwerk aus (Modbus/TCP auf Port 8899, ohne Cloud, read-only). Die Werte werden in einer SQLite-Datenbank gespeichert und im Browser visualisiert.</p>
+
+                <div class="skills" style="margin-top: 18px;">
+                    <span class="tag">Python</span>
+                    <span class="tag">FastAPI</span>
+                    <span class="tag">Modbus / TCP</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">Chart.js</span>
+                </div>
+
+                <div class="project-sub-sections" style="margin-top: 24px;">
+
+                    <div class="sub-section">
+                        <h4 class="sub-toggle" data-de="▶ Live-Dashboard" data-en="▶ Live Dashboard">▶ Live-Dashboard</h4>
+                        <div class="sub-content" style="display: none;">
+                            <p data-de="Echtzeit-Übersicht über PV-Leistung, Hausverbrauch, Netzbezug und Batteriestand inklusive Autarkiegrad und Systemwerten (Netzfrequenz, WR-Temperatur, Batteriespannung)." data-en="Real-time overview of PV power, household consumption, grid draw and battery level, including self-sufficiency rate and system values (grid frequency, inverter temperature, battery voltage).">Echtzeit-Übersicht über PV-Leistung, Hausverbrauch, Netzbezug und Batteriestand inklusive Autarkiegrad und Systemwerten (Netzfrequenz, WR-Temperatur, Batteriespannung).</p>
+                            <img src="assets/Solarapp_Live.png" alt="Solarapp – Live-Dashboard" class="app-shot">
+                        </div>
+                    </div>
+
+                    <div class="sub-section">
+                        <h4 class="sub-toggle" data-de="▶ Verlauf & Diagramme" data-en="▶ History & Charts">▶ Verlauf & Diagramme</h4>
+                        <div class="sub-content" style="display: none;">
+                            <p data-de="Historische Auswertung von PV-Ertrag, Verbrauch, Einspeisung, Netzbezug und Eigenverbrauch — pro Tag, Monat und Jahr, dargestellt mit Chart.js." data-en="Historical analysis of PV yield, consumption, feed-in, grid draw and self-consumption — by day, month and year, rendered with Chart.js.">Historische Auswertung von PV-Ertrag, Verbrauch, Einspeisung, Netzbezug und Eigenverbrauch — pro Tag, Monat und Jahr, dargestellt mit Chart.js.</p>
+                            <img src="assets/Solarapp_Verlauf.png" alt="Solarapp – Energieverlauf" class="app-shot">
+                        </div>
+                    </div>
+
+                    <div class="sub-section">
+                        <h4 class="sub-toggle" data-de="▶ Wirtschaftlichkeit" data-en="▶ Profitability">▶ Wirtschaftlichkeit</h4>
+                        <div class="sub-content" style="display: none;">
+                            <p data-de="Geld-Berechnung auf Basis der kumulativen Wechselrichter-Zähler: Ersparnis, Einspeise-Erlös, Autarkie und Amortisation mit Break-even-Prognose über die gesamte Laufzeit." data-en="Profitability calculation based on the inverter's cumulative meters: savings, feed-in revenue, self-sufficiency and amortization with a break-even forecast over the entire lifetime.">Geld-Berechnung auf Basis der kumulativen Wechselrichter-Zähler: Ersparnis, Einspeise-Erlös, Autarkie und Amortisation mit Break-even-Prognose über die gesamte Laufzeit.</p>
+                            <img src="assets/Solarapp_Geld.png" alt="Solarapp – Wirtschaftlichkeit" class="app-shot">
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
