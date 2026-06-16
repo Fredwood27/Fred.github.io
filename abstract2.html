@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vakuumgreifer für Beutel — Kurzfassung | Frederik Hoeft</title>
+
+    <link rel="icon" href="assets/logo-fh.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .abstract-page {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        .abstract-page .project-full {
+            margin-top: 32px;
+        }
+        .abstract-page h1 {
+            font-family: var(--mono);
+            font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .abstract-page h1 .highlight {
+            color: var(--primary);
+        }
+        .abstract-page .meta-line {
+            font-family: var(--mono);
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 32px;
+        }
+        .abstract-page .lang-block {
+            margin-top: 32px;
+        }
+        .abstract-page .lang-block h2 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--primary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+        }
+        .abstract-page .lang-block p {
+            margin-bottom: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .abstract-page .back-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .abstract-page .divider-mini {
+            margin: 40px 0;
+            border: 0;
+            border-top: 1px dashed var(--line);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">F.HOEFT</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-cursor">_</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects"><span class="nav-num">04</span> Projekte</a></li>
+                <li><a href="index.html">⌂ Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="abstract-page">
+        <div class="container">
+
+            <div class="project-full">
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag">// PROJEKT_02 / ABSTRACT</span>
+                <h1>Vakuumgreifer für Beutel — <span class="highlight">Kurzfassung</span></h1>
+                <p class="meta-line">// Frederik Hoeft &nbsp;·&nbsp; Konstruktion · Test · Simulation</p>
+
+                <h3 class="project-subtitle">Entwicklung und konstruktive Auslegung eines neuartigen Sauggreifers zur prozesssicheren Vereinzelung und Handhabung von Beutelverpackungen.</h3>
+
+                <div class="lang-block">
+                    <h2>Kurzfassung (Deutsch)</h2>
+                    <p>In der Intralogistik und der Verpackungsindustrie stellt das automatisierte Greifen von flexiblen Beutelverpackungen eine besondere Herausforderung dar. Werden mehrere übereinanderliegende Beutel mit konventionellen Sauggreifern angesaugt, kommt es häufig zur sogenannten Pyramidenbildung: Statt eines einzelnen Beutels werden mehrere Lagen gleichzeitig angehoben. Dies verhindert eine zuverlässige Vereinzelung und führt zu Störungen im nachgelagerten Prozess.</p>
+
+                    <p>Ziel dieses Projekts ist die Entwicklung eines neuartigen Greiferdesigns, das diese Pyramidenbildung gezielt unterbindet und eine sichere Einzelentnahme gewährleistet. Hierfür wurde der Sauggreifer in Siemens NX und Solid Edge vollständig neu konstruiert. Die Konstruktion umfasst unter anderem eine angepasste Dichtgeometrie sowie Gewinde- und Lagerdetails, die in Drauf- und Schnittansicht dokumentiert und anschließend additiv (3D-Druck) gefertigt wurden.</p>
+
+                    <p>Zur experimentellen Bewertung der verschiedenen Greifervarianten wurde ein Teststand auf Basis von Arduino-Boards und Wägezellen aufgebaut. Die Wägezellen erfassen die beim Greifen und Halten wirkenden Kräfte, die über das Arduino-Board eingelesen und ausgewertet werden. Dadurch lassen sich die Designvarianten unter reproduzierbaren Bedingungen quantitativ miteinander vergleichen.</p>
+
+                    <p>Ergänzend wurde das mechanische Verhalten des Greifers in einer strukturmechanischen Simulation mit Ansys untersucht. Die Simulation bewertet die auftretenden Spannungen und Verformungen unter Last und dient der Auslegung sowie der gezielten Optimierung kritischer Bauteilbereiche.</p>
+
+                    <p>Durch die Kombination aus iterativer CAD-Konstruktion, messtechnischer Validierung und numerischer Simulation entsteht ein durchgängiger Entwicklungsprozess, der darauf abzielt, die Prozesssicherheit beim automatisierten Handhaben von Beutelverpackungen nachhaltig zu erhöhen.</p>
+                </div>
+
+                <hr class="divider-mini">
+
+                <div class="lang-block">
+                    <h2>Abstract (English)</h2>
+                    <p>In intralogistics and the packaging industry, the automated picking of flexible bag packaging poses a particular challenge. When several stacked bags are picked up with conventional suction grippers, so-called pyramid formation frequently occurs: instead of a single bag, multiple layers are lifted at once. This prevents reliable singulation and causes disruptions in the downstream process.</p>
+
+                    <p>The goal of this project is to develop a novel gripper design that specifically prevents this pyramid formation and ensures reliable single-item picking. For this purpose, the suction gripper was completely redesigned in Siemens NX and Solid Edge. The design includes, among other things, an adapted sealing geometry as well as thread and bearing details, documented in top and cross-sectional views and subsequently produced by additive manufacturing (3D printing).</p>
+
+                    <p>To experimentally evaluate the different gripper variants, a test rig based on Arduino boards and load cells was built. The load cells capture the forces acting during gripping and holding, which are read in and evaluated via the Arduino board. This makes it possible to compare the design variants quantitatively under reproducible conditions.</p>
+
+                    <p>In addition, the mechanical behaviour of the gripper was investigated in a structural simulation using Ansys. The simulation evaluates the stresses and deformations occurring under load and supports the dimensioning and targeted optimisation of critical regions of the component.</p>
+
+                    <p>By combining iterative CAD design, measurement-based validation and numerical simulation, a continuous development process is established that aims to sustainably increase process reliability in the automated handling of bag packaging.</p>
+                </div>
+
+                <div class="back-row">
+                    <a href="index.html#projects" class="btn"><span class="btn-arrow">◂</span> Zurück zu Projekten</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="footer-line">// © 2026 FREDERIK HOEFT — TU BERLIN</span>
+        </div>
+    </footer>
+
+</body>
+</html>

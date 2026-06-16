@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solarapp — Kurzfassung | Frederik Hoeft</title>
+
+    <link rel="icon" href="assets/logo-fh.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        .abstract-page {
+            padding: 120px 0 80px;
+            min-height: 100vh;
+        }
+        .abstract-page .project-full {
+            margin-top: 32px;
+        }
+        .abstract-page h1 {
+            font-family: var(--mono);
+            font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+        .abstract-page h1 .highlight {
+            color: var(--primary);
+        }
+        .abstract-page .meta-line {
+            font-family: var(--mono);
+            color: var(--text-faint);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            margin-bottom: 32px;
+        }
+        .abstract-page .lang-block {
+            margin-top: 32px;
+        }
+        .abstract-page .lang-block h2 {
+            font-family: var(--mono);
+            font-size: 1rem;
+            color: var(--primary);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+            border-left: 3px solid var(--primary);
+            padding-left: 12px;
+        }
+        .abstract-page .lang-block p {
+            margin-bottom: 14px;
+            color: var(--text);
+            line-height: 1.75;
+        }
+        .abstract-page .back-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+        .abstract-page .divider-mini {
+            margin: 40px 0;
+            border: 0;
+            border-top: 1px dashed var(--line);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="grid-bg" aria-hidden="true"></div>
+    <div class="scan-line" aria-hidden="true"></div>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-bracket">[</span>
+                <span class="logo-text">F.HOEFT</span>
+                <span class="logo-bracket">]</span>
+                <span class="logo-cursor">_</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html#projects"><span class="nav-num">04</span> Projekte</a></li>
+                <li><a href="index.html">⌂ Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="abstract-page">
+        <div class="container">
+
+            <div class="project-full">
+                <div class="project-corner tl"></div>
+                <div class="project-corner tr"></div>
+                <div class="project-corner bl"></div>
+                <div class="project-corner br"></div>
+
+                <span class="project-tag">// PROJEKT_03 / ABSTRACT</span>
+                <h1>Solarapp — <span class="highlight">Kurzfassung</span></h1>
+                <p class="meta-line">// Frederik Hoeft &nbsp;·&nbsp; Persönliches Software-Projekt</p>
+
+                <h3 class="project-subtitle">Server-Anwendung zum lokalen Auslesen eines Photovoltaik-Hybridwechselrichters mit Live-Monitoring, historischer Datenanalyse und Wirtschaftlichkeitsberechnung.</h3>
+
+                <div class="lang-block">
+                    <h2>Kurzfassung (Deutsch)</h2>
+                    <p>Solarapp ist eine eigenständig entwickelte Software zur Überwachung und wirtschaftlichen Auswertung einer privaten Photovoltaikanlage mit Batteriespeicher. Anders als herstellergebundene Cloud-Lösungen liest die Anwendung den Deye-Hybridwechselrichter (SUN-8K-SG01HP3) vollständig lokal aus — ohne Internetdienst, datenschutzfreundlich und unabhängig von der Verfügbarkeit externer Server.</p>
+
+                    <p>Die App wird als Server auf Basis von Python (FastAPI/Uvicorn) betrieben und kommuniziert im selben Netzwerk über den Solarman-Datenlogger per Modbus/TCP (Port 8899) mit dem Wechselrichter. Der Zugriff erfolgt ausschließlich lesend (read-only); es werden zu keinem Zeitpunkt Werte in den Wechselrichter geschrieben. Die erfassten Messwerte werden in einer SQLite-Datenbank gespeichert, sodass die Datenbasis auch dann lückenlos bleibt, wenn der Rechner nicht durchgehend läuft.</p>
+
+                    <p>Das Web-Dashboard wird ohne Build-Prozess direkt von der Anwendung ausgeliefert (Chart.js und Alpine.js) und gliedert sich in drei Ansichten: eine Live-Übersicht über PV-Leistung, Hausverbrauch, Netzbezug und Batteriestand inklusive Autarkiegrad; eine Verlaufsansicht mit Tages-, Monats- und Jahresdiagrammen für Ertrag, Verbrauch, Einspeisung, Netzbezug und Eigenverbrauch; sowie eine Ansicht zur Wirtschaftlichkeit.</p>
+
+                    <p>Die Wirtschaftlichkeitsberechnung basiert auf den kumulativen Zählern des Wechselrichters und ermittelt pro Jahr die Stromkostenersparnis, den Einspeise-Erlös sowie die Eigenverbrauchs- und Autarkiequote. Auf dieser Grundlage prognostiziert die App die Amortisation der Anlage einschließlich des Break-even-Zeitpunkts.</p>
+
+                    <p>Solarapp verbindet damit Echtzeit-Monitoring, langfristige Datenhaltung und eine transparente Wirtschaftlichkeitsbetrachtung in einer schlanken, lokal gehosteten Anwendung und macht den tatsächlichen Nutzen der Photovoltaikanlage jederzeit nachvollziehbar.</p>
+                </div>
+
+                <hr class="divider-mini">
+
+                <div class="lang-block">
+                    <h2>Abstract (English)</h2>
+                    <p>Solarapp is a self-developed software application for monitoring and economically evaluating a private photovoltaic system with battery storage. Unlike manufacturer-bound cloud solutions, the application reads the Deye hybrid inverter (SUN-8K-SG01HP3) entirely locally — without any internet service, in a privacy-friendly manner and independently of the availability of external servers.</p>
+
+                    <p>The app runs as a server based on Python (FastAPI/Uvicorn) and communicates with the inverter over the same network via the Solarman data logger using Modbus/TCP (port 8899). Access is strictly read-only; no values are ever written to the inverter. The acquired measurements are stored in a SQLite database, so that the data set remains gap-free even when the computer is not running continuously.</p>
+
+                    <p>The web dashboard is served directly by the application without any build step (Chart.js and Alpine.js) and is divided into three views: a live overview of PV power, household consumption, grid draw and battery level including the self-sufficiency rate; a history view with daily, monthly and yearly charts for yield, consumption, feed-in, grid draw and self-consumption; and a profitability view.</p>
+
+                    <p>The profitability calculation is based on the inverter's cumulative meters and determines, for each year, the savings on electricity costs, the feed-in revenue as well as the self-consumption and self-sufficiency rates. On this basis, the app forecasts the system's amortisation, including the break-even point.</p>
+
+                    <p>Solarapp thus combines real-time monitoring, long-term data storage and a transparent profitability analysis in a lean, locally hosted application, making the actual benefit of the photovoltaic system traceable at any time.</p>
+                </div>
+
+                <div class="back-row">
+                    <a href="index.html#projects" class="btn"><span class="btn-arrow">◂</span> Zurück zu Projekten</a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <span class="footer-line">// © 2026 FREDERIK HOEFT — TU BERLIN</span>
+        </div>
+    </footer>
+
+</body>
+</html>
