@@ -1010,6 +1010,71 @@ a.tag-link {
     padding: 6px;
 }
 
+/* =========================================
+   LIGHTBOX (Bildansicht)
+   ========================================= */
+.project-full img {
+    cursor: zoom-in;
+}
+
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 4vh 4vw;
+    background: rgba(4, 7, 14, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+}
+
+.lightbox.is-open {
+    display: flex;
+}
+
+.lightbox-img {
+    max-width: 92vw;
+    max-height: 92vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    background: var(--bg);
+    padding: 6px;
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.6);
+    cursor: default;
+}
+
+.lightbox-close {
+    position: fixed;
+    top: 22px;
+    right: 26px;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: var(--accent);
+    background: rgba(12, 19, 34, 0.85);
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: 0 0 18px var(--accent-glow);
+    transform: scale(1.06);
+}
+
 /* Sub-sections */
 .project-sub-sections {
     margin-top: 26px;
