@@ -251,8 +251,11 @@ function closeLightbox() {
 }
 
 if (lightbox && lightboxImg) {
-    document.querySelectorAll('.project-full img').forEach(img => {
-        img.addEventListener('click', () => openLightbox(img.src, img.alt));
+    // Delegated click: works for every image, including ones inside
+    // sub-sections that are still collapsed when the page loads.
+    document.addEventListener('click', (e) => {
+        const img = e.target.closest('.project-full img');
+        if (img) openLightbox(img.src, img.alt);
     });
 
     lightboxClose.addEventListener('click', closeLightbox);

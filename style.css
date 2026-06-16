@@ -1014,7 +1014,22 @@ a.tag-link {
    LIGHTBOX (Bildansicht)
    ========================================= */
 .project-full img {
-    cursor: zoom-in;
+    cursor: pointer;
+}
+
+/* Einheitliches Hover-Highlight für alle anklickbaren Bilder
+   (CAD-Bilder werden bereits über .cad-figure:hover hervorgehoben) */
+.robot-img,
+.cfd-img,
+.app-shot {
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.robot-img:hover,
+.cfd-img:hover,
+.app-shot:hover {
+    border-color: var(--line-strong);
+    transform: translateY(-3px);
 }
 
 .lightbox {
@@ -1060,18 +1075,18 @@ a.tag-link {
     font-family: var(--mono);
     font-size: 1.6rem;
     line-height: 1;
-    color: var(--accent);
+    color: var(--primary);
     background: rgba(12, 19, 34, 0.85);
-    border: 1.5px solid var(--accent);
+    border: 1.5px solid var(--primary);
     border-radius: 50%;
     cursor: pointer;
     transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .lightbox-close:hover {
-    background: var(--accent);
+    background: var(--primary);
     color: var(--bg);
-    box-shadow: 0 0 18px var(--accent-glow);
+    box-shadow: 0 0 18px var(--primary-glow);
     transform: scale(1.06);
 }
 
